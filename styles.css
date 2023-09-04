@@ -147,6 +147,21 @@ body {
   border-radius: 50%;
 }
 
+#mode-s-1 {
+  height: 13%;
+  width: 6.8%;
+  left: 36.7%;
+  top: 94.1%;
+  border-radius: 50%;
+}
+
+#mode-s-2 {
+  height: 5%;
+  width: 3.8%;
+  left: 53%;
+  top: 93.1%;
+  border-radius: 50%;
+}
 
 /* Keychain Click Box */
 #anri-keychain-1,
