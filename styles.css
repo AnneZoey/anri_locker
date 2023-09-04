@@ -101,7 +101,7 @@ body {
 
 /* Anri Keychain 1 */
 .click-box {
-  background-color: rgba(130, 253, 48, 0.3);
+  background-color: rgba(130, 253, 48, 0);
   width: 3%;
   height: 5%;
   position: absolute;
@@ -150,6 +150,13 @@ body {
   top: 50%;
   left: 58.4%;
   border-radius: 200% 50% 200% 50%;
+}
+
+#barbie-pic {
+  width: 5%;
+  height: 10%;
+  left: 69.8%;
+  top: 78%;
 }
 
 /*Mode Clickboxes*/

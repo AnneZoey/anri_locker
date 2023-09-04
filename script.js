@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function () {
           textToShow = "This Neumann microphone has always been rock-solid during my live performances.";
           break;
         case "barbie-pic":
-          textToShow = "Had a blast with Teto! Anh Duy was begging to join us, a bit annoying though.";
+          textToShow = "Girls' day with Teto! Anh Duy was begging to join us, it was kinda annoying.";
           break;          
         case "mode-v":
           textToShow = "This vocal mode is filled with life and color, not dull or timid.";
