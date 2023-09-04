@@ -23,11 +23,32 @@ document.addEventListener("DOMContentLoaded", function () {
 
       switch (clickBoxId) {
         case "anri-keychain-1":
-          textToShow = "This is a keychain of me in my Qipao outfit, a harmonious fusion of my Vietnamese-Chinese heritage";
+          textToShow = "This keychain is me in my Qipao outfit, a fusion of my Vietnamese-Chinese heritage!";
           break;
         case "anri-keychain-2":
-          textToShow = "This is a keychain of me rocking out with a classic red electric guitar";
+          textToShow = "This is a keychain of me rocking out with a classic red electric guitar!";
           break;
+        case "keshi-poster":
+          textToShow = "I dream of taking the stage at a Keshi's concert someday, sharing my music with the world and feeling the energy of the crowd.";
+          break;
+        case "calendar":
+          textToShow = "Oh, yes! My big performance is coming up on October 14th. I'm feeling a mix of excitement and nerves. There's still so much I need to practice...";
+          break;
+        case "acrylic-standee":
+          textToShow = "I got this new custom acrylic standee made recently. It looks hella cute, don't you think?";
+          break;
+        case "gift-box":
+          textToShow = "Andi surprised me with this... I specifically told him not to get me anything!";
+          break;
+        case "sv-box":
+          textToShow = "The box cover photoshoot was a blast! I hope my energy was captured well.";
+          break;
+        case "mic":
+          textToShow = "This Neumann microphone has always been rock-solid during my live performances.";
+          break;
+        case "barbie-pic":
+          textToShow = "Had a blast with Teto! Anh Duy was begging to join us, a bit annoying though.";
+          break;          
         case "mode-v":
           textToShow = "This vocal mode is filled with life and color, not dull or timid.";
           break;

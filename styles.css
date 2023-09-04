@@ -108,6 +108,50 @@ body {
   cursor: pointer;
 }
 
+#keshi-poster {
+  width: 11%;
+  height: 32%;
+  top: 18%;
+  left: 39%;
+}
+
+#calendar {
+  width: 9%;
+  height: 12%;
+  top: 34%;
+  left: 53.7%;
+}
+
+#acrylic-standee {
+  height: 17%;
+  top: 67%;
+  left: 55%;
+}
+
+#gift-box {
+  width: 6.5%;
+  height: 22%;
+  top: 61%;
+  left: 38.5%;
+  border-radius: 10% 10% 20% 50%;
+}
+
+#sv-box {
+  width: 2.7%;
+  height: 32%;
+  top: 52%;
+  left: 34.5%;
+  border-radius: 10% 10% 0% 60%;
+}
+
+#mic {
+  width: 4.7%;
+  height: 15%;
+  top: 50%;
+  left: 58.4%;
+  border-radius: 200% 50% 200% 50%;
+}
+
 /*Mode Clickboxes*/
 #mode-c {
   height: 8.9%;
