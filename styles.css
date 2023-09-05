@@ -11,6 +11,17 @@ body {
   background-image: url(assets/bg.webp);
 }
 
+.instruction {
+  font-family: 'Neucha', cursive;
+  color: bisque;
+  font-size: 1em;
+  margin-top: 0;
+}
+
+.instruction h3 {
+  margin-top: 0;
+}
+
 .preorder-container {
   display: flex;
   justify-content: center;
@@ -109,6 +120,7 @@ body {
   color: bisque;
   font-family: 'Neucha', cursive;
   font-size: 1em;
+  font-weight: 500;
   border-radius: 10px;
   margin-left: 0.5em;
   height: auto;
@@ -152,7 +164,9 @@ body {
 .credit {
   color: bisque;
   font-family: 'Neucha', cursive;
-  font-size: 0.75em;
+  font-size: 1.15em;
+  padding-top: 0.6em;
+  padding-bottom: 0.6em;
 }
 
 /* Anri Keychain 1 */
@@ -368,6 +382,10 @@ body {
     border-radius: 10px;
   }
 
+  .instruction {
+    font-size: 0.6em;
+  }
+
   .dialogue-box {
     font-size: 0.3em;
   }
@@ -409,6 +427,10 @@ body {
     height: 473px;
     border-radius: 20px;
   }
+
+  .instruction {
+    font-size: 1.5em;
+  }
 }
 
 @media screen and (min-width: 1401px) {
@@ -422,6 +444,9 @@ body {
     font-size: 1.5em;
   }
 
+  .instruction {
+    font-size: 2em;
+  }
 }
 
 /*Load-in Animation*/
