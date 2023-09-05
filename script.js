@@ -77,7 +77,7 @@ document.addEventListener("DOMContentLoaded", function () {
           textToShow = "This vocal mode is the opposite of blurry, easy to hear and understand.";
           break;
         case "mode-p-1":
-          textToShow = "A mode with a full, strong tone. My vocal inspiration for it was Queen Bey! .";
+          textToShow = "A mode with a full, strong tone. My vocal inspiration for it was Queen Bey!";
           break;
         case "mode-f":
           textToShow = 'This mode is specially designed for melodic rap. "She got the ___ , next thing you know."';
