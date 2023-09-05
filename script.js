@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       switch (clickBoxId) {
         case "rock-polaroid":
-          textToShow = "Nothing good comes for free.";
+          textToShow = "Oops! That's my leggy pic.";
           break;
         case "xoxo":
           textToShow = "Stream this song if you know what's good!!";
@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", function () {
           textToShow = "I got this new custom acrylic standee made recently. It looks hella cute, don't you think?";
           break;
         case "gift-box":
-          textToShow = "Andi surprised me with this... I specifically told him not to get me anything!";
+          textToShow = "My number 1 fan surprised me with this... It was so sweet of him!";
           break;
         case "sv-box":
           textToShow = "The box cover photoshoot was a blast! I hope my energy was captured well.";
