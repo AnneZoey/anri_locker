@@ -24,8 +24,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }, (text.length / 1000) * 60000);
   }
   
-  
-
   document.querySelectorAll(".click-box").forEach(function (clickBox) {
     clickBox.addEventListener("click", function () {
       const clickBoxId = clickBox.id;
