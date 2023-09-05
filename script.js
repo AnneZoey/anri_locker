@@ -3,22 +3,32 @@
 document.addEventListener("DOMContentLoaded", function () {
   const dialogueContainer = document.querySelector(".dialogue-container");
   const dialogueBox = document.querySelector(".dialogue-box");
+  let timeoutId;
 
-  // Function to show the dialogue box with custom text
   function showDialogue(text) {
     dialogueBox.innerText = text;
-    dialogueContainer.style.display = "flex";
+    dialogueContainer.style.animation = "none";
     setTimeout(function () {
-      dialogueContainer.style.display = "none";
+      dialogueContainer.style.display = "flex";
+      dialogueContainer.style.animation = "fadeIn 0.15s ease-in-out";
+    }, 10);
+
+    clearTimeout(timeoutId);
+
+    timeoutId = setTimeout(function () {
+      dialogueContainer.style.animation = "fadeOut 0.15s ease-in-out";
+      dialogueContainer.addEventListener("animationend", function() {
+        dialogueContainer.style.display = "none";
+        dialogueContainer.style.animation = "";
+      }, { once: true });
     }, (text.length / 1000) * 60000);
   }
   
-  // Add click event listeners to each click-box
+  
+
   document.querySelectorAll(".click-box").forEach(function (clickBox) {
     clickBox.addEventListener("click", function () {
       const clickBoxId = clickBox.id;
-
-      // Determine the text to display based on the click-box ID
       let textToShow = "";
 
       switch (clickBoxId) {
@@ -97,13 +107,11 @@ document.addEventListener("DOMContentLoaded", function () {
         case "mode-p-2":
           textToShow = "This mode is associated with royalty and is also a nickname for 'Aaliyah'!";
           break;
-        // Add more cases for other click-box IDs and their associated text
         default:
           textToShow = "Did you know Jun's birthday is coming up?";
       }
-
-      // Show the dialogue box with the determined text
       showDialogue(textToShow);
     });
   });
 });
+
