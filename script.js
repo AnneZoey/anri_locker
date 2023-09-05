@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       switch (clickBoxId) {
         case "rock-polaroid":
-          textToShow = "Good things ain't come for free...";
+          textToShow = "Nothing good comes for free.";
           break;
         case "xoxo":
           textToShow = "Stream this song if you know what's good!!";
