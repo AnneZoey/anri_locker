@@ -3,16 +3,20 @@
 document.addEventListener("DOMContentLoaded", function () {
   const dialogueContainer = document.querySelector(".dialogue-container");
   const dialogueBox = document.querySelector(".dialogue-box");
+  const audio = document.getElementById('test-audio');
+  const volume = 0.70;
   let timeoutId;
 
-  function showDialogue(text) {
+  function showDialogue(text, clickBoxId) {
     dialogueBox.innerText = text;
     dialogueContainer.style.animation = "none";
     setTimeout(function () {
       dialogueContainer.style.display = "flex";
       dialogueContainer.style.animation = "fadeIn 0.15s ease-in-out";
     }, 10);
-
+    audio.src = 'audios/' + clickBoxId + '.mp3';
+    audio.volume = volume;
+    audio.play();
     clearTimeout(timeoutId);
 
     timeoutId = setTimeout(function () {
@@ -108,7 +112,7 @@ document.addEventListener("DOMContentLoaded", function () {
         default:
           textToShow = "Did you know Jun's birthday is coming up?";
       }
-      showDialogue(textToShow);
+      showDialogue(textToShow, clickBoxId);
     });
   });
 });

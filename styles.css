@@ -11,6 +11,10 @@ body {
   background-image: url(assets/bg.webp);
 }
 
+audio {
+  display: none;
+}
+
 .instruction {
   font-family: 'Neucha', cursive;
   color: bisque;
