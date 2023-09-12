@@ -4,7 +4,8 @@ document.addEventListener("DOMContentLoaded", function () {
   const dialogueContainer = document.querySelector(".dialogue-container");
   const dialogueBox = document.querySelector(".dialogue-box");
   const audio = document.getElementById('test-audio');
-  const volume = 0.70;
+  audio.volume = 0.7;
+  const preorderButton = document.getElementById('preorder-button');
   let timeoutId;
 
   function showDialogue(text, clickBoxId) {
@@ -15,7 +16,6 @@ document.addEventListener("DOMContentLoaded", function () {
       dialogueContainer.style.animation = "fadeIn 0.15s ease-in-out";
     }, 10);
     audio.src = 'audios/' + clickBoxId + '.mp3';
-    audio.volume = volume;
     audio.play();
     clearTimeout(timeoutId);
 
@@ -27,6 +27,11 @@ document.addEventListener("DOMContentLoaded", function () {
       }, { once: true });
     }, (text.length / 1000) * 60000);
   }
+
+  preorderButton.addEventListener("click", function () {
+    audio.src = 'audios/closeureyes.mp3';
+    audio.play();
+  });
   
   document.querySelectorAll(".click-box").forEach(function (clickBox) {
     clickBox.addEventListener("click", function () {
