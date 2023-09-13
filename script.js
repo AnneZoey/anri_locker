@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const dialogueContainer = document.querySelector(".dialogue-container");
   const dialogueBox = document.querySelector(".dialogue-box");
   const audio = document.getElementById('test-audio');
+  const junHiding = document.getElementById('jun-hiding');
   audio.volume = 0.7;
   const preorderButton = document.getElementById('preorder-button');
   const anriIcon = document.getElementById('anri-icon');
@@ -16,6 +17,8 @@ document.addEventListener("DOMContentLoaded", function () {
     audio.pause();
     anriIcon.style.display = "block";
     junIcon.style.display = "none";
+    junHiding.style.display = "none";
+
     if (clickBoxId === "locker-slam") {
       if (hitCount < 3) {
         // For the first three clicks on "locker-slam", only play sound and hide dialogue
@@ -30,6 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
         text = "Get off my dick, you bitch!";
         anriIcon.style.display = "none";
         junIcon.style.display = "block";
+        junHiding.style.display = "block";
       }
     } else {
       // For other click-boxes, just play the audio associated with them
@@ -42,15 +46,19 @@ document.addEventListener("DOMContentLoaded", function () {
     setTimeout(function () {
       dialogueContainer.style.display = "flex";
       dialogueContainer.style.animation = "fadeIn 0.15s ease-in-out";
+      junHiding.style.animation = "fadeIn2 0.10s ease-in-out";
     }, 10);
 
     clearTimeout(timeoutId);
 
     timeoutId = setTimeout(function () {
       dialogueContainer.style.animation = "fadeOut 0.15s ease-in-out";
+      junHiding.style.animation = "fadeOut2 0.15s ease-in-out";
       dialogueContainer.addEventListener("animationend", function() {
         dialogueContainer.style.display = "none";
         dialogueContainer.style.animation = "";
+        junHiding.style.display = "none";
+        junHiding.style,animation = "";
       }, { once: true });
     }, (text.length / 1000) * 60000);
   }

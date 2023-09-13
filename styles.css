@@ -102,6 +102,14 @@ audio {
   object-fit: contain; /* Ensure the entire image fits without cropping */
 }
 
+#jun-hiding {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: none;
+  object-fit: contain; /* Ensure the entire image fits without cropping */
+}
+
 .dialogue-container {
   top: 80%;
   position: absolute;
@@ -486,5 +494,23 @@ audio {
   to {
     opacity: 0;
     transform: translateY(20%);
+  }
+}
+
+@keyframes fadeOut2 {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeIn2 {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
