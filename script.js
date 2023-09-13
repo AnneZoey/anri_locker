@@ -1,34 +1,52 @@
 // JavaScript code in your "script.js" file
 
 document.addEventListener("DOMContentLoaded", function () {
+  // DOM elements
   const dialogueContainer = document.querySelector(".dialogue-container");
   const dialogueBox = document.querySelector(".dialogue-box");
   const audio = document.getElementById('test-audio');
   const junHiding = document.getElementById('jun-hiding');
-  audio.volume = 0.7;
   const preorderButton = document.getElementById('preorder-button');
   const anriIcon = document.getElementById('anri-icon');
   const junIcon = document.getElementById('jun-icon');
 
+  // Audio settings
+  audio.volume = 0.7;
+
+  // Game-related variables
   let timeoutId;
   let hitCount = 0;
+  
+  //Helper Functions
+  function playAudio(filename) {
+    audio.src = 'audios/' + filename + '.mp3';
+    audio.play();
+  }
 
+  function setDisplay(element, display) {
+    element.style.display = display;
+  }
+
+  function setAnimation(element, animationName) {
+    animationName = animationName === "none" ? animationName : animationName + " 0.15s ease-in-out";
+    element.style.animation = animationName;
+  }
+  
   function showDialogue(text, clickBoxId) {
     audio.pause();
     anriIcon.style.display = "block";
     junIcon.style.display = "none";
     junHiding.style.display = "none";
+    dialogueContainer.style.animation = "none";
 
     if (clickBoxId === "locker-slam") {
       if (hitCount < 3) {
         // For the first three clicks on "locker-slam", only play sound and hide dialogue
-        audio.src = 'audios/' + clickBoxId + '.mp3';
-        audio.play();
+        playAudio(clickBoxId);
         hitCount++;
       } else {
         // After the third click on "locker-slam", show dialogue and play "get-off.mp3"
-        audio.src = 'audios/get-off.mp3';
-        audio.play();
+        playAudio("get-off");
         hitCount = 0;
         text = "Get off my dick, you bitch!";
         anriIcon.style.display = "none";
@@ -37,35 +55,32 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     } else {
       // For other click-boxes, just play the audio associated with them
-      audio.src = 'audios/' + clickBoxId + '.mp3';
-      audio.play();
+      playAudio(clickBoxId);
     }
     
     dialogueBox.innerText = text;
-    dialogueContainer.style.animation = "none";
     setTimeout(function () {
-      dialogueContainer.style.display = "flex";
-      dialogueContainer.style.animation = "fadeIn 0.15s ease-in-out";
-      junHiding.style.animation = "fadeIn2 0.10s ease-in-out";
+      setDisplay(dialogueContainer, "flex");
+      setAnimation(dialogueContainer, "fadeIn");
+      setAnimation(junHiding, "fadeIn2");
     }, 10);
 
     clearTimeout(timeoutId);
 
     timeoutId = setTimeout(function () {
-      dialogueContainer.style.animation = "fadeOut 0.15s ease-in-out";
-      junHiding.style.animation = "fadeOut2 0.15s ease-in-out";
+      setAnimation(dialogueContainer, "fadeOut");
+      setAnimation(junHiding, "fadeOut2");
       dialogueContainer.addEventListener("animationend", function() {
-        dialogueContainer.style.display = "none";
-        dialogueContainer.style.animation = "";
-        junHiding.style.display = "none";
-        junHiding.style,animation = "";
+        setDisplay(dialogueContainer, "none");
+        setAnimation(dialogueContainer, "none");
+        setDisplay(junHiding, "none");
+        setAnimation(junHiding, "none");
       }, { once: true });
     }, (text.length / 1000) * 60000);
   }
 
   preorderButton.addEventListener("click", function () {
-    audio.src = 'audios/closeureyes.mp3';
-    audio.play();
+    playAudio("closeureyes")
   });
   
   document.querySelectorAll(".click-box").forEach(function (clickBox) {
