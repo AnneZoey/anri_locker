@@ -34,10 +34,10 @@ document.addEventListener("DOMContentLoaded", function () {
   
   function showDialogue(text, clickBoxId) {
     audio.pause();
-    anriIcon.style.display = "block";
-    junIcon.style.display = "none";
-    junHiding.style.display = "none";
-    dialogueContainer.style.animation = "none";
+    setDisplay(anriIcon, "block");
+    setDisplay(junIcon, "none");
+    setDisplay(junHiding, "none");
+    setAnimation(dialogueContainer, "none");
 
     if (clickBoxId === "locker-slam") {
       if (hitCount < 3) {
@@ -49,9 +49,9 @@ document.addEventListener("DOMContentLoaded", function () {
         playAudio("get-off");
         hitCount = 0;
         text = "Get off my dick, you bitch!";
-        anriIcon.style.display = "none";
-        junIcon.style.display = "block";
-        junHiding.style.display = "block";
+        setDisplay(anriIcon, "none");
+        setDisplay(junIcon, "block");
+        setDisplay(junHiding, "block");
       }
     } else {
       // For other click-boxes, just play the audio associated with them
@@ -75,6 +75,7 @@ document.addEventListener("DOMContentLoaded", function () {
         setAnimation(dialogueContainer, "none");
         setDisplay(junHiding, "none");
         setAnimation(junHiding, "none");
+        audio.pause();
       }, { once: true });
     }, (text.length / 1000) * 60000);
   }
