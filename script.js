@@ -135,7 +135,7 @@ document.addEventListener("DOMContentLoaded", function () {
           textToShow = "A mode with a full, strong tone. My vocal inspiration for it was Queen Bey!";
           break;
         case "mode-f":
-          textToShow = 'This mode is specially designed for melodic rap. "She got the ___ , next thing you know."';
+          textToShow = 'This mode is specially designed for melodic rap. "She hit the ___ , next thing you know."';
           break;
         case "mode-w":
           textToShow = "This vocal mode is a soft spoken secret, a hushed tone in the air.";
