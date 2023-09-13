@@ -7,16 +7,36 @@ document.addEventListener("DOMContentLoaded", function () {
   audio.volume = 0.7;
   const preorderButton = document.getElementById('preorder-button');
   let timeoutId;
+  let hitCount = 0;
 
   function showDialogue(text, clickBoxId) {
+    audio.pause();
+    if (clickBoxId === "locker-slam") {
+      if (hitCount < 3) {
+        // For the first three clicks on "locker-slam", only play sound and hide dialogue
+        audio.src = 'audios/' + clickBoxId + '.mp3';
+        audio.play();
+        hitCount++;
+      } else {
+        // After the third click on "locker-slam", show dialogue and play "get-off.mp3"
+        audio.src = 'audios/get-off.mp3';
+        audio.play();
+        hitCount = 0;
+        text = "Get off my dick, you bitch!";
+      }
+    } else {
+      // For other click-boxes, just play the audio associated with them
+      audio.src = 'audios/' + clickBoxId + '.mp3';
+      audio.play();
+    }
+    
     dialogueBox.innerText = text;
     dialogueContainer.style.animation = "none";
     setTimeout(function () {
       dialogueContainer.style.display = "flex";
       dialogueContainer.style.animation = "fadeIn 0.15s ease-in-out";
     }, 10);
-    audio.src = 'audios/' + clickBoxId + '.mp3';
-    audio.play();
+
     clearTimeout(timeoutId);
 
     timeoutId = setTimeout(function () {
@@ -39,6 +59,9 @@ document.addEventListener("DOMContentLoaded", function () {
       let textToShow = "";
 
       switch (clickBoxId) {
+        case "locker-slam":
+          textToShow = "* Hits the locker door *";
+          break;
         case "rock-polaroid":
           textToShow = "Oops! That's my leggy pic.";
           break;
