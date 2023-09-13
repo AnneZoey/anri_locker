@@ -6,11 +6,16 @@ document.addEventListener("DOMContentLoaded", function () {
   const audio = document.getElementById('test-audio');
   audio.volume = 0.7;
   const preorderButton = document.getElementById('preorder-button');
+  const anriIcon = document.getElementById('anri-icon');
+  const junIcon = document.getElementById('jun-icon');
+
   let timeoutId;
   let hitCount = 0;
 
   function showDialogue(text, clickBoxId) {
     audio.pause();
+    anriIcon.style.display = "block";
+    junIcon.style.display = "none";
     if (clickBoxId === "locker-slam") {
       if (hitCount < 3) {
         // For the first three clicks on "locker-slam", only play sound and hide dialogue
@@ -23,6 +28,8 @@ document.addEventListener("DOMContentLoaded", function () {
         audio.play();
         hitCount = 0;
         text = "Get off my dick, you bitch!";
+        anriIcon.style.display = "none";
+        junIcon.style.display = "block";
       }
     } else {
       // For other click-boxes, just play the audio associated with them
