@@ -1,7 +1,5 @@
 // JavaScript code in your "script.js" file
 
-
-
 document.addEventListener("DOMContentLoaded", function () {
   // DOM elements
   const dialogueContainer = document.querySelector(".dialogue-container");
