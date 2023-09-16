@@ -1,5 +1,7 @@
 // JavaScript code in your "script.js" file
 
+
+
 document.addEventListener("DOMContentLoaded", function () {
   // DOM elements
   const dialogueContainer = document.querySelector(".dialogue-container");
@@ -7,6 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const audio = document.getElementById('test-audio');
   const junHiding = document.getElementById('jun-hiding');
   const preorderButton = document.getElementById('preorder-button');
+  const button = document.getElementById('button');
   const anriIcon = document.getElementById('anri-icon');
   const junIcon = document.getElementById('jun-icon');
 
@@ -16,7 +19,20 @@ document.addEventListener("DOMContentLoaded", function () {
   // Game-related variables
   let timeoutId;
   let hitCount = 0;
+  let preorderCount = 0;
+
+  window.addEventListener("load", function () {
+    const loadingScreen = document.querySelector(".loading-screen");
+    const progressBar = document.querySelector(".progress-bar");
   
+    progressBar.addEventListener("animationend", function () {
+      setAnimation(loadingScreen, "fadeOut2");
+      setTimeout(function () {
+        setDisplay(loadingScreen, "none");
+      }, 150);
+    }, { once: true });
+    
+  });
   //Helper Functions
   function playAudio(filename) {
     audio.src = 'audios/' + filename + '.mp3';
@@ -81,7 +97,14 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   preorderButton.addEventListener("click", function () {
-    playAudio("closeureyes")
+    if (preorderCount === 3) {
+      button.setAttribute("href","https://audiologie.us/products/synthesizer-v-jun-body-pillow-case");
+      preorderCount = 0;
+    } else {
+      button.setAttribute("href","https://audiologie.us/products/synthesizer-v-ai-anri-digital");
+      preorderCount++;
+    }
+    playAudio("closeureyes");
   });
   
   document.querySelectorAll(".click-box").forEach(function (clickBox) {
