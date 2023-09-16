@@ -11,28 +11,60 @@ document.addEventListener("DOMContentLoaded", function () {
   const anriIcon = document.getElementById('anri-icon');
   const junIcon = document.getElementById('jun-icon');
   const sample = document.getElementById('sample');
+  const loadingText = document.getElementById('loading-text');
 
   // Audio settings
   audio.volume = 0.7;
-
   // Game-related variables
   let timeoutId;
   let hitCount = 0;
   let preorderCount = 0;
+  let randomNum = getRandomInt(1, 4);
 
-  window.addEventListener("load", function () {
-    const loadingScreen = document.querySelector(".loading-screen");
-    const progressBar = document.querySelector(".progress-bar");
+  function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
   
-    progressBar.addEventListener("animationend", function () {
-      setAnimation(loadingScreen, "fadeOut2");
-      setTimeout(function () {
-        setDisplay(loadingScreen, "none");
+  // Loading screen
+  simulateLoading(function () {
+    const loadingScreen = document.querySelector(".loading-screen");
+    loadingScreen.style.opacity = 0;
+    setTimeout(function () {
+        loadingScreen.style.display = "none";
         loadingScreen.remove();
-      }, 150);
-    }, { once: true });
-    
+    }, 1500);
   });
+
+  function simulateLoading(callback) {
+    const progressBar = document.querySelector(".progress-bar");
+    loadingText.textContent = getText(randomNum);
+    let width = 0;
+    const interval = setInterval(function () {
+        if (width >= 100) {
+            clearInterval(interval);
+            callback();
+        } else {
+            width++;
+            progressBar.style.width = width + "%";
+        }
+    }, 30);
+  }
+
+  function getText(randomNum) {
+    switch (randomNum) {
+      case 1:
+        return "My main fashion style is inspired by the ABG aesthetic!";
+      case 2:
+        return "My hair is the color of honey milk tea!";
+      case 3:
+        return "The music festival I enjoyed the most was Head In The Clouds 2022.";
+      case 4:
+        return "My wishlist for studio gear this year is the Audeze LCD-X!";
+      default:
+        return "Loading...";
+    }
+  }
+  
   //Helper Functions
   function playAudio(filename) {
     audio.src = 'audios/' + filename + '.mp3';
