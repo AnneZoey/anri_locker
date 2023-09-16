@@ -211,21 +211,40 @@ audio {
   width: 100%;
 }
 
-#preorder-button:hover {
-  opacity: 0.9;
-  animation: 0.5s ease;
+.preorder-button-container {
+  transition: transform 0.3s ease;
+}
+
+.preorder-button-container:hover {
+  transform: scale(1.05);
+  cursor: pointer;
 }
 
 .audiologie-logo {
-  max-width: 50%;
+  width: 100%;
   position: relative;
   overflow: hidden;
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
+  background-color: rgb(0, 0, 0);
+  margin-bottom: 0.6em;
 }
 
+.logo-container {
+  max-width: 50%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.3s ease;
+}
+
+.logo-container:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+}
 #ao-logo {
   width: 100%;
 }
