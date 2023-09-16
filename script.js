@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const button = document.getElementById('button');
   const anriIcon = document.getElementById('anri-icon');
   const junIcon = document.getElementById('jun-icon');
+  const sample = document.getElementById('sample');
 
   // Audio settings
   audio.volume = 0.7;
@@ -29,6 +30,7 @@ document.addEventListener("DOMContentLoaded", function () {
       setAnimation(loadingScreen, "fadeOut2");
       setTimeout(function () {
         setDisplay(loadingScreen, "none");
+        loadingScreen.remove();
       }, 150);
     }, { once: true });
     
@@ -105,6 +107,10 @@ document.addEventListener("DOMContentLoaded", function () {
       preorderCount++;
     }
     playAudio("closeureyes");
+  });
+
+  sample.addEventListener("click", function () {
+    playAudio("sample");
   });
   
   document.querySelectorAll(".click-box").forEach(function (clickBox) {
