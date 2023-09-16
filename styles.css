@@ -737,11 +737,11 @@ audio {
   }
 
   .audiologie-logo {
-    height: 60px;
+    height: 40px;
   }
 
   body {
-    padding: 65px 0 0 0;
+    padding: 45px 0 0 0;
   }
 
   .instruction {
@@ -849,8 +849,17 @@ audio {
     border-radius: 15px;
   }
 
+
+  .audiologie-logo {
+    height: 50px;
+  }
+
+  body {
+    padding: 60px 0 0 0;
+  }
+
   .instruction {
-    font-size: 1.25em;
+    font-size: 1em;
   }
 
   .character-bio {
@@ -931,6 +940,14 @@ audio {
     border-radius: 15px;
   }
 
+  .audiologie-logo {
+    height: 50px;
+  }
+
+  body {
+    padding: 60px 0 0 0;
+  }
+  
   .instruction {
     font-size: 1.25em;
   }
@@ -1011,6 +1028,14 @@ audio {
     width: 560px;
     height: 315px;
     border-radius: 15px;
+  }
+
+  .audiologie-logo {
+    height: 60px;
+  }
+
+  body {
+    padding: 70px 0 0 0;
   }
 
   .instruction {
