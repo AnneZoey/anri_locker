@@ -16,6 +16,19 @@ audio {
   display: none;
 }
 
+.name-spin-heart {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.spinning-heart {
+  margin-left: 2em;
+  width: 3rem;
+  animation: verticalSpinning 1s linear infinite;
+}
+
 .character-bio {
   position: relative;
   overflow: hidden;
@@ -664,6 +677,12 @@ audio {
   .name {
     font-size: 16px;
   }
+
+  .spinning-heart {
+    width: 1rem;
+    margin-left: 0.7em;
+    padding-top: 0.5em;
+  }
   
   .vc-container {
     width: 140px;
@@ -771,6 +790,12 @@ audio {
   .name {
     font-size: 16px;
   }
+
+  .spinning-heart {
+    width: 1rem;
+    margin-left: 0.7em;
+    padding-top: 0.5em;
+  }
   
   .vc-container {
     width: 140px;
@@ -847,6 +872,12 @@ audio {
   .name {
     font-size: 30px;
   }
+
+  .spinning-heart {
+    width: 1.7rem;
+    margin-left: 1.1em;
+    padding-top: 0.5em;
+  }
   
   .vc-container {
     width: 250px;
@@ -892,6 +923,7 @@ audio {
   }
 }
 
+
 @media screen and (min-width: 701px) and (max-width: 850px) {
   #iframe-embed {
     width: 560px;
@@ -922,7 +954,12 @@ audio {
   
   .name {
     font-size: 30px;
-    font-family: 'Times New Roman', Times, serif;
+  }
+
+  .spinning-heart {
+    width: 2rem;
+    margin-left: 1.1em;
+    padding-top: 0.5em;
   }
   
   .vc-container {
@@ -998,6 +1035,12 @@ audio {
   
   .name {
     font-size: 30px;
+  }
+
+  .spinning-heart {
+    width: 2rem;
+    margin-left: 1.1em;
+    padding-top: 0.5em;
   }
   
   .vc-container {
@@ -1145,5 +1188,14 @@ audio {
   }
   100% {
     width: 100%;
+  }
+}
+
+@keyframes verticalSpinning {
+  0% {
+    transform: rotateY(0deg);
+  }
+  100% {
+    transform: rotateY(360deg);
   }
 }
