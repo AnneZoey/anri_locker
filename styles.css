@@ -418,7 +418,7 @@ audio {
 
 /* Anri Keychain 1 */
 .click-box {
-  background-color: rgba(130, 253, 48, 0.8);
+  background-color: rgba(130, 253, 48, 0);
   width: 3%;
   height: 5%;
   position: absolute;
