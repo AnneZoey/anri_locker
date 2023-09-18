@@ -95,6 +95,7 @@ document.addEventListener("DOMContentLoaded", function () {
       } else {
         // After the third click on "locker-slam", show dialogue and play "get-off.mp3"
         playAudio("get-off");
+        clickBoxId = "get-off";
         hitCount = 0;
         text = "Get off my dick, you bitch!";
         setDisplay(anriIcon, "none");
@@ -105,27 +106,38 @@ document.addEventListener("DOMContentLoaded", function () {
       // For other click-boxes, just play the audio associated with them
       playAudio(clickBoxId);
     }
-    
-    dialogueBox.innerText = text;
-    setTimeout(function () {
-      setDisplay(dialogueContainer, "flex");
-      setAnimation(dialogueContainer, "fadeIn");
-      setAnimation(junHiding, "fadeIn2");
-    }, 10);
 
-    clearTimeout(timeoutId);
+    const audioFileName = `audios/${clickBoxId}.mp3`;
+    const audioElement = new Audio(audioFileName);
+    audioElement.load();
 
-    timeoutId = setTimeout(function () {
-      setAnimation(dialogueContainer, "fadeOut");
-      setAnimation(junHiding, "fadeOut2");
-      dialogueContainer.addEventListener("animationend", function() {
+    audioElement.addEventListener('loadedmetadata', function() {
+      const audioDurationInSeconds = audioElement.duration;
+
+      // Calculate the delay based on audio duration
+      const delayMilliseconds = audioDurationInSeconds * 1000;
+      
+      dialogueBox.innerText = text;
+      setTimeout(function () {
+        setDisplay(dialogueContainer, "flex");
+        setAnimation(dialogueContainer, "fadeIn");
+        setAnimation(junHiding, "fadeIn2");
+      }, 10);
+
+      clearTimeout(timeoutId);
+
+      timeoutId = setTimeout(function () {
+        setAnimation(dialogueContainer, "fadeOut");
+        setAnimation(junHiding, "fadeOut2");
+        dialogueContainer.addEventListener("animationend", function() {
         setDisplay(dialogueContainer, "none");
         setAnimation(dialogueContainer, "none");
         setDisplay(junHiding, "none");
         setAnimation(junHiding, "none");
         audio.pause();
-      }, { once: true });
-    }, (text.length / 1000) * 60000);
+        }, { once: true });
+      }, delayMilliseconds);
+    });
   }
 
   preorderButton.addEventListener("click", function () {
@@ -204,7 +216,7 @@ document.addEventListener("DOMContentLoaded", function () {
           textToShow = "This vocal mode is the shadowy side of sound, where mysteries and secrets hide.";
           break;
         case "mode-c":
-          textToShow = "This vocal mode is the opposite of blurry, easy to hear and understand.";
+          textToShow = "This vocal mode is the opposite of blurry. Easy to hear and understand.";
           break;
         case "mode-p-1":
           textToShow = "A mode with a full, strong tone. My vocal inspiration for it was Queen Bey!";
