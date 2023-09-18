@@ -200,6 +200,18 @@ document.addEventListener("DOMContentLoaded", function () {
         case "baseball":
           textToShow = "I'm actually not sure why this is here... hmmm...";
           break;
+        case "platinum":
+          textToShow = "Certified Platinum!";
+          break;
+        case "guitar-keychain":
+          textToShow = "Anh took this from me the other day. Glad to have it back!";
+          break;
+        case "akem":
+          textToShow = "Akem was like the camera wizard, always catching me from my best angles!";
+          break;
+        case "kungom":
+          textToShow = "KUNGOM totally yassified my locker! What an artist!";
+          break;
         case "calendar":
           textToShow = "My next live is on October 14th...There's still so much I need to practice...";
           break;
