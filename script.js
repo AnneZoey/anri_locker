@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const junIcon = document.getElementById('jun-icon');
   const sample = document.getElementById('sample');
   const loadingText = document.getElementById('loading-text');
+  const content = document.getElementById('content');
 
   // Audio settings
   audio.volume = 0.7;
@@ -29,6 +30,7 @@ document.addEventListener("DOMContentLoaded", function () {
   simulateLoading(function () {
     const loadingScreen = document.querySelector(".loading-screen");
     loadingScreen.style.opacity = 0;
+    content.style.display = "flex";
     setTimeout(function () {
         loadingScreen.style.display = "none";
         loadingScreen.remove();
@@ -113,8 +115,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     audioElement.addEventListener('loadedmetadata', function() {
       const audioDurationInSeconds = audioElement.duration;
-
-      // Calculate the delay based on audio duration
       const delayMilliseconds = audioDurationInSeconds * 1000;
       
       dialogueBox.innerText = text;
@@ -186,7 +186,19 @@ document.addEventListener("DOMContentLoaded", function () {
           textToShow = "Ever since I heard this artist 3 years ago, I can't get his voice 'outta my head'...";
           break;
         case "keshi-polaroid":
-          textToShow = "Keshi signed this one for me on the back! ";
+          textToShow = "Keshi signed this one for me on the back!";
+          break;
+        case "gibson":
+          textToShow = "Their electric guitars rocks! Get it?";
+          break;
+        case "keshi-polaroid-2":
+          textToShow = "Gotta keep my eyes closed for that... mhmm";
+          break;
+        case "skull":
+          textToShow = "All I ever wanna do is burn it all down!";
+          break;
+        case "baseball":
+          textToShow = "I'm actually not sure why this is here... hmmm...";
           break;
         case "calendar":
           textToShow = "My next live is on October 14th...There's still so much I need to practice...";
