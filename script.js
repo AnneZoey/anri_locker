@@ -252,7 +252,7 @@ document.addEventListener("DOMContentLoaded", function () {
           textToShow = "This vocal mode is a soft spoken secret, a hushed tone in the air.";
           break;
         case "mode-s-1":
-          textToShow = "This mode is represented by a flower that means honesty and sincerity in hanakotoba.";
+          textToShow = 'この"ボーカルスタイル"の花言葉は、「小さな幸せ」、「誠実」、「謙虚」';
           break;
         case "mode-m":
           textToShow = "This mode sounds gentle and laid-back... you may need to view it from a different angle...";
