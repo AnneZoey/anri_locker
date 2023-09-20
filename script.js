@@ -20,13 +20,16 @@ document.addEventListener("DOMContentLoaded", function () {
   let timeoutId;
   let hitCount = 0;
   let preorderCount = 0;
-  let randomNum = getRandomInt(1, 4);
+  let min = 1;
+  let max = 4;
+  let randomNum = getRandomInt(min, max);
 
+  //Get random number between min and max
   function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
   
-  // Loading screen
+  
   simulateLoading(function () {
     const loadingScreen = document.querySelector(".loading-screen");
     loadingScreen.style.opacity = 0;
@@ -37,6 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }, 1500);
   });
 
+  // Loading screen simulation
   function simulateLoading(callback) {
     const progressBar = document.querySelector(".progress-bar");
     loadingText.textContent = getText(randomNum);
@@ -68,6 +72,20 @@ document.addEventListener("DOMContentLoaded", function () {
   }
   
   //Helper Functions
+  function YTEmbedResize() {
+    const youtubeVideo = document.getElementById("iframe-embed");
+    const viewportWidth = window.innerWidth;
+    const widthPercentage = 80; // Adjust this percentage as needed
+
+    const newWidth = (viewportWidth * widthPercentage) / 100;
+    const newHeight = newWidth * 0.5625;
+
+    youtubeVideo.style.width = `${newWidth}px`;
+    youtubeVideo.style.height = `${newHeight}px`;
+  }
+  window.addEventListener('resize', updateVideoSize);
+  updateVideoSize();
+
   function playAudio(filename) {
     audio.src = 'audios/' + filename + '.mp3';
     audio.play();
@@ -252,7 +270,7 @@ document.addEventListener("DOMContentLoaded", function () {
           textToShow = "This vocal mode is a soft spoken secret, a hushed tone in the air.";
           break;
         case "mode-s-1":
-          textToShow = 'この"ボーカルスタイル"の花言葉は、「小さな幸せ」、「誠実」、「謙虚」';
+          textToShow = 'この"ボーカルスタイル"の花言葉は、「小さな幸せ」、「誠実」、「謙虚」。';
           break;
         case "mode-m":
           textToShow = "This mode sounds gentle and laid-back... you may need to view it from a different angle...";
