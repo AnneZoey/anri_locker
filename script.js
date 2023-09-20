@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function () {
   let timeoutId;
   let hitCount = 0;
   let min = 1;
-  let max = 6;
+  let max = 7;
   let randomNum = getRandomInt(min, max);
 
   //Get random number between min and max
@@ -60,9 +60,11 @@ document.addEventListener("DOMContentLoaded", function () {
       case 4:
         return "My wishlist for studio gear this year is the Audeze LCD-X!";
       case 5:
-        return "My favorite food is bánh mì thịt nướng!";
+        return "When I'm stressed, I eat a bánh mì and I'm good as new!";
       case 6:
-        return "I'm half Vietnamese and half Chinese!";
+        return "I'm Vietnamese-Chinese!";
+      case 7:
+        return "my star sign is Gemini ⭐ I can't wait to introduce someone to you...";
       default:
         return "Loading...";
     }
