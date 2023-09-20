@@ -3,6 +3,7 @@
 document.addEventListener("DOMContentLoaded", function () {
   // DOM elements
   const dialogueContainer = document.querySelector(".dialogue-container");
+  const youtubeVideo = document.getElementById("iframe-embed");
   const dialogueBox = document.querySelector(".dialogue-box");
   const audio = document.getElementById('test-audio');
   const junHiding = document.getElementById('jun-hiding');
@@ -62,17 +63,20 @@ document.addEventListener("DOMContentLoaded", function () {
   
   //Helper Functions
   function YTEmbedResize() {
-    const youtubeVideo = document.getElementById("iframe-embed");
     const viewportWidth = window.innerWidth;
-    const widthPercentage = 70;
+    const widthPercentage = 0.7;
 
-    const newWidth = (viewportWidth * widthPercentage) / 100;
+    const newWidth = viewportWidth * widthPercentage;
     const newHeight = newWidth * 0.5625;
     const borderRadius = newWidth * 0.02;
 
     youtubeVideo.style.width = `${newWidth}px`;
     youtubeVideo.style.height = `${newHeight}px`;
     youtubeVideo.style.borderRadius = `${borderRadius}px`;
+
+    const fontPercentage = 0.03;
+    const newFontSize = 2 * fontPercentage * viewportWidth;
+    dialogueBox.style.fontSize = `${newFontSize}em`;
   }
 
   function playAudio(filename) {
