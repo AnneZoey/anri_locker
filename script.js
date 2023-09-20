@@ -1,41 +1,50 @@
 // JavaScript code in your "script.js" file
 
 document.addEventListener("DOMContentLoaded", function () {
-  // DOM elements
-  const dialogueContainer = document.querySelector(".dialogue-container");
-  const anriIconContainer = document.querySelector(".anri-icon-container");
-  const header = document.querySelector(".audiologie-logo");
-  const instructions = document.querySelector(".instruction");
-  const youtubeVideo = document.getElementById("iframe-embed");
-  const dialogueBox = document.querySelector(".dialogue-box");
-  const audio = document.getElementById('test-audio');
-  const junHiding = document.getElementById('jun-hiding');
-  const preorderButton = document.getElementById('preorder-button');
-  const button = document.getElementById('button');
-  const anriIcon = document.getElementById('anri-icon');
-  const junIcon = document.getElementById('jun-icon');
-  const sample = document.getElementById('sample');
-  const loadingText = document.getElementById('loading-text');
-  const content = document.getElementById('content');
+  // Get references to DOM elements
+  const dialogueContainer = document.querySelector(".dialogue-container"); // The container for the dialogue box
+  const anriIconContainer = document.querySelector(".anri-icon-container"); // The container for the Anri icon
+  const header = document.querySelector(".audiologie-logo"); // The header element containing the Audiologie logo
+  const instructions = document.querySelector(".instruction"); // The instructions element
+  const youtubeVideo = document.getElementById("iframe-embed"); // The YouTube video iframe
+  const dialogueBox = document.querySelector(".dialogue-box"); // The dialogue box element
+  const audio = document.getElementById('test-audio'); // The audio element for testing purposes
+  const junHiding = document.getElementById('jun-hiding'); // The Jun hiding element
+  const preorderButton = document.getElementById('preorder-button'); // The preorder button element
+  const button = document.getElementById('button'); // The button element
+  const anriIcon = document.getElementById('anri-icon'); // The Anri icon element
+  const junIcon = document.getElementById('jun-icon'); // The Jun icon element
+  const sample = document.getElementById('sample'); // The sample element
+  const loadingText = document.getElementById('loading-text'); // The loading text element
+  const content = document.getElementById('content'); // The content element
 
-  // Audio settings
-  audio.volume = 0.7;
+  //Audio settings
+  audio.volume = 0.7; // Set the volume of the audio to 70%
+
   // Game-related variables
-  let timeoutId;
-  let hitCount = 0;
-  let min = 1;
-  let max = 7;
-  let randomNum = getRandomInt(min, max);
+  let timeoutId; // The ID of the timeout for hiding the dialogue box
+  let hitCount = 0; // The number of times the "locker-slam" click box has been clicked
+  let min = 1; // The minimum value for the random number generator
+  let max = 7; // The maximum value for the random number generator
+  let randomNum = getRandomInt(min, max); // A random number between min and max (inclusive)
 
-  //Get random number between min and max
+  /**
+ * Returns a random integer between the given minimum and maximum values (inclusive).
+ * @param {number} min - The minimum value for the random number generator.
+ * @param {number} max - The maximum value for the random number generator.
+ * @returns {number} A random integer between min and max (inclusive).
+ */
   function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 
-  // Loading screen simulation
+  /**
+   * Simulates a loading screen with a progress bar and text that changes randomly.
+   * @param {function} callback - The function to call after the loading simulation is complete.
+   */
   function simulateLoading(callback) {
     const progressBar = document.querySelector(".progress-bar");
-    loadingText.textContent = getText(randomNum);
+    loadingText.textContent = getText(randomNum); // Set the loading text to a random value
     let width = 0;
     const interval = setInterval(function () {
         if (width >= 100) {
@@ -48,7 +57,11 @@ document.addEventListener("DOMContentLoaded", function () {
     }, 25);
   }
 
-  // Get text for loading screen
+  /**
+   * Returns a string of text based on the given random number.
+   * @param {number} randomNum - A random number between 1 and 7 (inclusive).
+   * @returns {string} A string of text based on the given random number.
+   */
   function getText(randomNum) {
     switch (randomNum) {
       case 1:
@@ -69,10 +82,13 @@ document.addEventListener("DOMContentLoaded", function () {
         return "Loading...";
     }
   }
-  
-  //Helper Functions
+    
+  /**
+   * Resizes various elements on the page based on the current viewport width.
+   */
   function elementResize() {
     const viewportWidth = window.innerWidth;
+
     // Resize youtube video
     const widthPercentage = 0.7;
     const newWidth = viewportWidth * widthPercentage;
@@ -104,33 +120,48 @@ document.addEventListener("DOMContentLoaded", function () {
     anriIconContainer.style.width = `${newAnriIconContainer}px`;
   }
 
-    // Auto hide header on scroll
-    function autoHideHeaderSrcoll() {
-      let prevScrollpos = window.pageYOffset;
-      window.onscroll = function() {
-        let currentScrollPos = window.pageYOffset;
-        if (prevScrollpos > currentScrollPos) {
-          header.style.top = "0";
-        } else {
-          header.style.top = "-1000px";
-        }
-        prevScrollpos = currentScrollPos;
+  /**
+ * Hides the header element when the user scrolls down and shows it when the user scrolls up.
+ */
+  function autoHideHeaderSrcoll() {
+    let prevScrollpos = window.pageYOffset;
+    window.onscroll = function() {
+      let currentScrollPos = window.pageYOffset;
+      if (prevScrollpos > currentScrollPos) {
+        header.style.top = "0";
+      } else {
+        header.style.top = "-1000px";
       }
-    }  
+      prevScrollpos = currentScrollPos;
+    }
+  }
 
-  // Play audio with filename
+/**
+ * Plays the audio file with the given file name.
+ * @param {string} filename - The name of the audio file to play.
+ */
   function playAudio(filename) {
     audio.src = 'audios/' + filename + '.mp3';
     audio.play();
   }
 
-  // Set element display
+/**
+ * Sets the display property of the given element to the given value.
+ * @param {HTMLElement} element - The element to set the display property of.
+ * @param {string} display - The value to set the display property to.
+ */
   function setDisplay(element, display) {
     element.style.display = display;
   }
 
-  // Set element animation
+/**
+ * Sets the animation property of the given element to the given animation name.
+ * @param {HTMLElement} element - The element to set the animation property of.
+ * @param {string} animationName - The name of the animation to set.
+ */
   function setAnimation(element, animationName) {
+    // If the animation name is "none", set the animation property to "none"
+    // Otherwise, set the animation property to the given animation name with a duration of 0.15s and an ease-in-out timing function
     animationName = animationName === "none" ? animationName : animationName + " 0.15s ease-in-out";
     element.style.animation = animationName;
   }
