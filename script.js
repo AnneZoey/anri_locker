@@ -205,7 +205,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   function playRandomAudio() {
-    const randomNum = getRandomInt(1, 3);
+    const randomNum = getRandomInt(1, 4);
     const audioFileName = `audios/button-${randomNum}.mp3`;
     const audioElement = new Audio(audioFileName);
     if (randomNum === 3) { 
