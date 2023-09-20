@@ -23,7 +23,6 @@ document.addEventListener("DOMContentLoaded", function () {
   // Game-related variables
   let timeoutId;
   let hitCount = 0;
-  let preorderCount = 0;
   let min = 1;
   let max = 6;
   let randomNum = getRandomInt(min, max);
@@ -152,7 +151,7 @@ document.addEventListener("DOMContentLoaded", function () {
         playAudio("get-off");
         clickBoxId = "get-off";
         hitCount = 0;
-        text = "Get off my dick, you bitch!";
+        text = "Whaddup dawg?";
         setDisplay(anriIcon, "none");
         setDisplay(junIcon, "block");
         setDisplay(junHiding, "block");
@@ -204,16 +203,22 @@ document.addEventListener("DOMContentLoaded", function () {
         loadingScreen.remove();
     }, 1500);
   });
-  
-  preorderButton.addEventListener("click", function () {
-    if (preorderCount === 3) {
+
+  function playRandomAudio() {
+    const randomNum = getRandomInt(1, 3);
+    const audioFileName = `audios/button-${randomNum}.mp3`;
+    const audioElement = new Audio(audioFileName);
+    if (randomNum === 3) { 
       button.setAttribute("href","https://audiologie.us/products/synthesizer-v-jun-body-pillow-case");
-      preorderCount = 0;
     } else {
       button.setAttribute("href","https://audiologie.us/products/synthesizer-v-ai-anri-digital");
-      preorderCount++;
     }
-    playAudio("closeureyes");
+    audioElement.load();
+    audioElement.play();
+  }
+  
+  preorderButton.addEventListener("click", function () {
+    playRandomAudio();
   });
 
   sample.addEventListener("click", function () {
