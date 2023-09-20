@@ -3,6 +3,7 @@
 document.addEventListener("DOMContentLoaded", function () {
   // DOM elements
   const dialogueContainer = document.querySelector(".dialogue-container");
+  const viewportWidth = window.innerWidth;
   const anriIconContainer = document.querySelector(".anri-icon-container");
   const header = document.querySelector(".audiologie-logo");
   const instructions = document.querySelector(".instruction");
@@ -25,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
   let hitCount = 0;
   let preorderCount = 0;
   let min = 1;
-  let max = 4;
+  let max = 6;
   let randomNum = getRandomInt(min, max);
 
   //Get random number between min and max
@@ -46,9 +47,10 @@ document.addEventListener("DOMContentLoaded", function () {
             width++;
             progressBar.style.width = width + "%";
         }
-    }, 30);
+    }, 25);
   }
 
+  // Get text for loading screen
   function getText(randomNum) {
     switch (randomNum) {
       case 1:
@@ -59,28 +61,17 @@ document.addEventListener("DOMContentLoaded", function () {
         return "The music festival I enjoyed the most was Head In The Clouds 2022.";
       case 4:
         return "My wishlist for studio gear this year is the Audeze LCD-X!";
+      case 5:
+        return "My favorite food is bánh mì thịt nướng!";
+      case 6:
+        return "I'm half Vietnamese and half Chinese!";
       default:
         return "Loading...";
     }
   }
   
-  function autoHideHeaderSrcoll() {
-    let prevScrollpos = window.pageYOffset;
-    window.onscroll = function() {
-      let currentScrollPos = window.pageYOffset;
-      if (prevScrollpos > currentScrollPos) {
-        header.style.top = "0";
-      } else {
-        header.style.top = "-1000px";
-      }
-      prevScrollpos = currentScrollPos;
-    }
-  }
-
   //Helper Functions
   function elementResize() {
-    const viewportWidth = window.innerWidth;
-    
     // Resize youtube video
     const widthPercentage = 0.7;
     const newWidth = viewportWidth * widthPercentage;
@@ -112,6 +103,20 @@ document.addEventListener("DOMContentLoaded", function () {
     anriIconContainer.style.width = `${newAnriIconContainer}px`;
   }
 
+    // Auto hide header on scroll
+    function autoHideHeaderSrcoll() {
+      let prevScrollpos = window.pageYOffset;
+      window.onscroll = function() {
+        let currentScrollPos = window.pageYOffset;
+        if (prevScrollpos > currentScrollPos) {
+          header.style.top = "0";
+        } else {
+          header.style.top = "-1000px";
+        }
+        prevScrollpos = currentScrollPos;
+      }
+    }  
+
   // Play audio with filename
   function playAudio(filename) {
     audio.src = 'audios/' + filename + '.mp3';
@@ -123,11 +128,13 @@ document.addEventListener("DOMContentLoaded", function () {
     element.style.display = display;
   }
 
+  // Set element animation
   function setAnimation(element, animationName) {
     animationName = animationName === "none" ? animationName : animationName + " 0.15s ease-in-out";
     element.style.animation = animationName;
   }
   
+  // Show dialogue
   function showDialogue(text, clickBoxId) {
     audio.pause();
     setDisplay(anriIcon, "block");
