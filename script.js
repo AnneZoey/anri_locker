@@ -28,17 +28,6 @@ document.addEventListener("DOMContentLoaded", function () {
   function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
-  
-  
-  simulateLoading(function () {
-    const loadingScreen = document.querySelector(".loading-screen");
-    loadingScreen.style.opacity = 0;
-    content.style.display = "flex";
-    setTimeout(function () {
-        loadingScreen.style.display = "none";
-        loadingScreen.remove();
-    }, 1500);
-  });
 
   // Loading screen simulation
   function simulateLoading(callback) {
@@ -75,16 +64,16 @@ document.addEventListener("DOMContentLoaded", function () {
   function YTEmbedResize() {
     const youtubeVideo = document.getElementById("iframe-embed");
     const viewportWidth = window.innerWidth;
-    const widthPercentage = 80; // Adjust this percentage as needed
+    const widthPercentage = 70;
 
     const newWidth = (viewportWidth * widthPercentage) / 100;
     const newHeight = newWidth * 0.5625;
+    const borderRadius = newWidth * 0.02;
 
     youtubeVideo.style.width = `${newWidth}px`;
     youtubeVideo.style.height = `${newHeight}px`;
+    youtubeVideo.style.borderRadius = `${borderRadius}px`;
   }
-  window.addEventListener('resize', updateVideoSize);
-  updateVideoSize();
 
   function playAudio(filename) {
     audio.src = 'audios/' + filename + '.mp3';
@@ -157,7 +146,17 @@ document.addEventListener("DOMContentLoaded", function () {
       }, delayMilliseconds);
     });
   }
-
+  // Event Listeners
+  simulateLoading(function () {
+    const loadingScreen = document.querySelector(".loading-screen");
+    loadingScreen.style.opacity = 0;
+    content.style.display = "flex";
+    setTimeout(function () {
+        loadingScreen.style.display = "none";
+        loadingScreen.remove();
+    }, 1500);
+  });
+  
   preorderButton.addEventListener("click", function () {
     if (preorderCount === 3) {
       button.setAttribute("href","https://audiologie.us/products/synthesizer-v-jun-body-pillow-case");
@@ -173,6 +172,9 @@ document.addEventListener("DOMContentLoaded", function () {
     playAudio("sample");
   });
   
+  YTEmbedResize();
+  window.addEventListener('resize', YTEmbedResize);
+
   document.querySelectorAll(".click-box").forEach(function (clickBox) {
     clickBox.addEventListener("click", function () {
       const clickBoxId = clickBox.id;

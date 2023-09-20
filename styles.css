@@ -389,6 +389,10 @@ audio {
   margin-bottom: 2.5em;
 }
 
+#iframe-embed {
+  border-radius: 10px;
+}
+
 .title-text-container {
   width: 100%;
   height: auto;
@@ -693,12 +697,6 @@ audio {
 
 /* Responsive video */
 @media screen and (max-width: 400px) {
-  #iframe-embed {
-    width: 280px;
-    height: 158px;
-    border-radius: 10px;
-  }
-
   .audiologie-logo {
     height: 40px;
   }
@@ -804,12 +802,6 @@ audio {
 }
 
 @media screen and (min-width: 401px) and (max-width: 600px) {
-  #iframe-embed {
-    width: 350px;
-    height: 198px;
-    border-radius: 10px;
-  }
-
   .audiologie-logo {
     height: 40px;
   }
@@ -918,13 +910,6 @@ audio {
 }
 
 @media screen and (min-width: 601px) and (max-width: 700px) {
-  #iframe-embed {
-    width: 560px;
-    height: 315px;
-    border-radius: 15px;
-  }
-
-
   .audiologie-logo {
     height: 50px;
   }
@@ -1008,12 +993,6 @@ audio {
 }
 
 @media screen and (min-width: 701px) and (max-width: 850px) {
-  #iframe-embed {
-    width: 560px;
-    height: 315px;
-    border-radius: 15px;
-  }
-
   .audiologie-logo {
     height: 50px;
   }
@@ -1098,12 +1077,6 @@ audio {
 }
 
 @media screen and (min-width: 851px) and (max-width: 1000px) {
-  #iframe-embed {
-    width: 560px;
-    height: 315px;
-    border-radius: 15px;
-  }
-
   .audiologie-logo {
     height: 60px;
   }
@@ -1187,12 +1160,6 @@ audio {
 }
 
 @media screen and (min-width: 1001px) and (max-width: 1100px) {
-  #iframe-embed {
-    width: 840px;
-    height: 473px;
-    border-radius: 20px;
-  }
-
   .character-img-container {
     transform: translate(25%,29%);
     width: 80%;
@@ -1212,11 +1179,6 @@ audio {
 }
 
 @media screen and (min-width: 1101px) {
-  #iframe-embed {
-    width: 980px;
-    height: 551px;
-    border-radius: 20px;
-  }
 
   .logo-container {
     width: 20%;
