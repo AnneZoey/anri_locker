@@ -165,14 +165,34 @@ document.addEventListener("DOMContentLoaded", function () {
     animationName = animationName === "none" ? animationName : animationName + " 0.15s ease-in-out";
     element.style.animation = animationName;
   }
+
+  /**
+ * Plays a random audio file and sets the href of the button element based on the random number generated.
+ */
+  function playRandomAudio() {
+    const randomNum = getRandomInt(1, 4); // Generate a random number between 1 and 4 (inclusive)
+    const audioFileName = `audios/button-${randomNum}.mp3`; // Construct the file name of the audio file to play
+    const audioElement = new Audio(audioFileName); // Create a new Audio object with the file name
+    if (randomNum === 3) { // If the random number is 3
+      button.setAttribute("href","https://audiologie.us/products/synthesizer-v-jun-body-pillow-case"); // Set the href of the button to the Jun body pillow case product page
+    } else { // If the random number is not 3
+      button.setAttribute("href","https://audiologie.us/products/synthesizer-v-ai-anri-digital"); // Set the href of the button to the Anri digital product page
+    }
+    audioElement.load(); // Load the audio file
+    audioElement.play(); // Play the audio file
+  }
   
-  // Show dialogue
+  /**
+ * Shows a dialogue box with the given text and plays the audio associated with the given click box ID.
+ * @param {string} text - The text to display in the dialogue box.
+ * @param {string} clickBoxId - The ID of the click box that was clicked.
+ */
   function showDialogue(text, clickBoxId) {
-    audio.pause();
-    setDisplay(anriIcon, "block");
-    setDisplay(junIcon, "none");
-    setDisplay(junHiding, "none");
-    setAnimation(dialogueContainer, "none");
+    audio.pause(); // Pause any currently playing audio
+    setDisplay(anriIcon, "block"); // Show the Anri icon
+    setDisplay(junIcon, "none"); // Hide the Jun icon
+    setDisplay(junHiding, "none"); // Hide the Jun hiding element
+    setAnimation(dialogueContainer, "none"); // Reset the animation of the dialogue container
 
     if (clickBoxId === "locker-slam") {
       if (hitCount < 3) {
@@ -185,9 +205,9 @@ document.addEventListener("DOMContentLoaded", function () {
         clickBoxId = "get-off";
         hitCount = 0;
         text = "Whaddup dawg?";
-        setDisplay(anriIcon, "none");
-        setDisplay(junIcon, "block");
-        setDisplay(junHiding, "block");
+        setDisplay(anriIcon, "none"); // Hide the Anri icon
+        setDisplay(junIcon, "block"); // Show the Jun icon
+        setDisplay(junHiding, "block"); // Show the Jun hiding element
       }
     } else {
       // For other click-boxes, just play the audio associated with them
@@ -204,30 +224,33 @@ document.addEventListener("DOMContentLoaded", function () {
       
       dialogueBox.innerText = text;
       setTimeout(function () {
-        setDisplay(dialogueContainer, "flex");
-        setAnimation(dialogueContainer, "fadeIn");
-        setAnimation(junHiding, "fadeIn2");
+        setDisplay(dialogueContainer, "flex"); // Show the dialogue container
+        setAnimation(dialogueContainer, "fadeIn"); // Fade in the dialogue container
+        setAnimation(junHiding, "fadeIn2"); // Fade in the Jun hiding element
       }, 10);
 
       clearTimeout(timeoutId);
 
       timeoutId = setTimeout(function () {
-        setAnimation(dialogueContainer, "fadeOut");
-        setAnimation(junHiding, "fadeOut2");
+        setAnimation(dialogueContainer, "fadeOut"); // Fade out the dialogue container
+        setAnimation(junHiding, "fadeOut2"); // Fade out the Jun hiding element
         dialogueContainer.addEventListener("animationend", function() {
-        setDisplay(dialogueContainer, "none");
-        setAnimation(dialogueContainer, "none");
-        setDisplay(junHiding, "none");
-        setAnimation(junHiding, "none");
-        audio.pause();
+        setDisplay(dialogueContainer, "none"); // Hide the dialogue container
+        setAnimation(dialogueContainer, "none"); // Reset the animation of the dialogue container
+        setDisplay(junHiding, "none"); // Hide the Jun hiding element
+        setAnimation(junHiding, "none"); // Reset the animation of the Jun hiding element
+        audio.pause(); // Pause the audio
         }, { once: true });
       }, delayMilliseconds);
     });
   }
-  // Event Listeners
+  // Event Listeners and function calls
+  // Call the autoHideHeaderSrcoll function to hide the header element when the user scrolls down and show it when the user scrolls up
   autoHideHeaderSrcoll();
 
+  // Simulate a loading screen with a progress bar and text that changes randomly
   simulateLoading(function () {
+    // After the loading simulation is complete, fade out the loading screen and display the content
     const loadingScreen = document.querySelector(".loading-screen");
     loadingScreen.style.opacity = 0;
     content.style.display = "flex";
@@ -237,30 +260,23 @@ document.addEventListener("DOMContentLoaded", function () {
     }, 1500);
   });
 
-  function playRandomAudio() {
-    const randomNum = getRandomInt(1, 4);
-    const audioFileName = `audios/button-${randomNum}.mp3`;
-    const audioElement = new Audio(audioFileName);
-    if (randomNum === 3) { 
-      button.setAttribute("href","https://audiologie.us/products/synthesizer-v-jun-body-pillow-case");
-    } else {
-      button.setAttribute("href","https://audiologie.us/products/synthesizer-v-ai-anri-digital");
-    }
-    audioElement.load();
-    audioElement.play();
-  }
-  
+  // Add a click event listener to the preorder button that plays a random audio file and sets the href of the button element based on the random number generated
   preorderButton.addEventListener("click", function () {
     playRandomAudio();
   });
 
+  // Add a click event listener to the sample button that plays the "sample.mp3" audio file
   sample.addEventListener("click", function () {
     playAudio("sample");
   });
-  
-  elementResize()
-  window.addEventListener('resize', elementResize);
 
+  // Call the elementResize function to resize various elements on the page based on the current viewport width
+  elementResize();
+
+  // Add a resize event listener to the window that calls the elementResize function when the window is resized
+  window.addEventListener('resize', elementResize);
+  
+  // Add a click event listener to each click box element
   document.querySelectorAll(".click-box").forEach(function (clickBox) {
     clickBox.addEventListener("click", function () {
       const clickBoxId = clickBox.id;
