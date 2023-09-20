@@ -6,14 +6,12 @@ body {
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  padding: 110px 0 0 0; 
   margin: 0;
   background-image: url(assets/bg.webp);
   font-family: 'Neucha', cursive;
 }
 
 #content {
-  padding-top: 1%;
   display: none;
   flex-direction: column;
   align-items: center;
@@ -284,10 +282,10 @@ audio {
   overflow: hidden;
   display: flex;
   justify-content: center;
+  transition: top 0.35s ease;
   flex-direction: column;
   align-items: center;
   background-color: rgb(0, 0, 0);
-  margin-bottom: 0.6em;
   z-index: 9998;
 }
 
@@ -350,7 +348,8 @@ audio {
 }
 
 .anri-icon-container {
-  width: 10%;
+  width: 60px;
+  flex: 0 0 auto;
   height: auto;
 }
 
@@ -697,14 +696,6 @@ audio {
 
 /* Responsive video */
 @media screen and (max-width: 400px) {
-  .audiologie-logo {
-    height: 40px;
-  }
-
-  body {
-    padding: 45px 0 0 0;
-  }
-
   .credit {
     font-size: 0.5em;
     padding-top: 1em;
@@ -794,14 +785,6 @@ audio {
 }
 
 @media screen and (min-width: 401px) and (max-width: 600px) {
-  .audiologie-logo {
-    height: 40px;
-  }
-
-  body {
-    padding: 45px 0 0 0;
-  }
-
   .credit {
     font-size: 0.5em;
     padding-top: 1em;
@@ -894,14 +877,6 @@ audio {
 }
 
 @media screen and (min-width: 601px) and (max-width: 700px) {
-  .audiologie-logo {
-    height: 50px;
-  }
-
-  body {
-    padding: 60px 0 0 0;
-  }
-
   .character-bio {
     height: 350px;
     width: 100%;
@@ -973,14 +948,6 @@ audio {
 }
 
 @media screen and (min-width: 701px) and (max-width: 850px) {
-  .audiologie-logo {
-    height: 50px;
-  }
-
-  body {
-    padding: 60px 0 0 0;
-  }
-
   .character-bio {
     height: 500px;
     width: 100%;
@@ -1053,14 +1020,6 @@ audio {
 }
 
 @media screen and (min-width: 851px) and (max-width: 1000px) {
-  .audiologie-logo {
-    height: 60px;
-  }
-
-  body {
-    padding: 70px 0 0 0;
-  }
-
   .character-bio {
     height: 500px;
     width: 100%;
@@ -1139,13 +1098,6 @@ audio {
 
   .bio {
     left: 10%;
-  }
-}
-
-@media screen and (min-width: 1101px) {
-
-  .logo-container {
-    width: 20%;
   }
 }
 

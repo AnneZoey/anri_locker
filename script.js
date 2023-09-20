@@ -3,6 +3,8 @@
 document.addEventListener("DOMContentLoaded", function () {
   // DOM elements
   const dialogueContainer = document.querySelector(".dialogue-container");
+  const anriIconContainer = document.querySelector(".anri-icon-container");
+  const header = document.querySelector(".audiologie-logo");
   const instructions = document.querySelector(".instruction");
   const youtubeVideo = document.getElementById("iframe-embed");
   const dialogueBox = document.querySelector(".dialogue-box");
@@ -62,6 +64,19 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
   
+  function autoHideHeaderSrcoll() {
+    let prevScrollpos = window.pageYOffset;
+    window.onscroll = function() {
+      let currentScrollPos = window.pageYOffset;
+      if (prevScrollpos > currentScrollPos) {
+        header.style.top = "0";
+      } else {
+        header.style.top = "-1000px";
+      }
+      prevScrollpos = currentScrollPos;
+    }
+  }
+
   //Helper Functions
   function elementResize() {
     const viewportWidth = window.innerWidth;
@@ -80,6 +95,21 @@ document.addEventListener("DOMContentLoaded", function () {
     const newFontSize = fontPercentage * viewportWidth;
     dialogueBox.style.fontSize = `${newFontSize}px`;
     instructions.style.fontSize = `${1.55 * newFontSize}px`;
+
+    // Resize header
+    const headerHeightPercentage = 0.08;
+    const newHeaderHeight = headerHeightPercentage * viewportWidth;
+    header.style.height = `${newHeaderHeight}px`;
+
+    // Resize content container padding
+    const contentMarginPercentage = 0.1;
+    const newContentPadding = contentMarginPercentage * viewportWidth;
+    content.style.marginTop = `${newContentPadding}px`;
+
+    // Resize anri icon container
+    const anriIconContainerPercentage = 0.075;
+    const newAnriIconContainer = anriIconContainerPercentage * viewportWidth;
+    anriIconContainer.style.width = `${newAnriIconContainer}px`;
   }
 
   // Play audio with filename
@@ -156,6 +186,8 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
   // Event Listeners
+  autoHideHeaderSrcoll();
+
   simulateLoading(function () {
     const loadingScreen = document.querySelector(".loading-screen");
     loadingScreen.style.opacity = 0;
