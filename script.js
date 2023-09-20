@@ -3,7 +3,6 @@
 document.addEventListener("DOMContentLoaded", function () {
   // DOM elements
   const dialogueContainer = document.querySelector(".dialogue-container");
-  const viewportWidth = window.innerWidth;
   const anriIconContainer = document.querySelector(".anri-icon-container");
   const header = document.querySelector(".audiologie-logo");
   const instructions = document.querySelector(".instruction");
@@ -72,6 +71,7 @@ document.addEventListener("DOMContentLoaded", function () {
   
   //Helper Functions
   function elementResize() {
+    const viewportWidth = window.innerWidth;
     // Resize youtube video
     const widthPercentage = 0.7;
     const newWidth = viewportWidth * widthPercentage;
@@ -220,7 +220,7 @@ document.addEventListener("DOMContentLoaded", function () {
     playAudio("sample");
   });
   
-  elementResize();
+  elementResize()
   window.addEventListener('resize', elementResize);
 
   document.querySelectorAll(".click-box").forEach(function (clickBox) {
