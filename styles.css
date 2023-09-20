@@ -705,14 +705,6 @@ audio {
     padding: 45px 0 0 0;
   }
 
-  .instruction {
-    font-size: 0.6em;
-  }
-
-  .dialogue-box {
-    font-size: 0.3em;
-  }
-
   .credit {
     font-size: 0.5em;
     padding-top: 1em;
@@ -808,14 +800,6 @@ audio {
 
   body {
     padding: 45px 0 0 0;
-  }
-
-  .instruction {
-    font-size: 0.6em;
-  }
-
-  .dialogue-box {
-    font-size: 0.3em;
   }
 
   .credit {
@@ -918,10 +902,6 @@ audio {
     padding: 60px 0 0 0;
   }
 
-  .instruction {
-    font-size: 1em;
-  }
-
   .character-bio {
     height: 350px;
     width: 100%;
@@ -999,10 +979,6 @@ audio {
 
   body {
     padding: 60px 0 0 0;
-  }
-  
-  .instruction {
-    font-size: 1.25em;
   }
 
   .character-bio {
@@ -1085,10 +1061,6 @@ audio {
     padding: 70px 0 0 0;
   }
 
-  .instruction {
-    font-size: 1.5em;
-  }
-
   .character-bio {
     height: 500px;
     width: 100%;
@@ -1168,28 +1140,12 @@ audio {
   .bio {
     left: 10%;
   }
-
-  .dialogue-box {
-    font-size: 1em;
-  }
-
-  .instruction {
-    font-size: 1.7em;
-  }
 }
 
 @media screen and (min-width: 1101px) {
 
   .logo-container {
     width: 20%;
-  }
-
-  .dialogue-box {
-    font-size: 1.5em;
-  }
-
-  .instruction {
-    font-size: 2em;
   }
 }
 

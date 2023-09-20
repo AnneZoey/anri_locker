@@ -3,6 +3,7 @@
 document.addEventListener("DOMContentLoaded", function () {
   // DOM elements
   const dialogueContainer = document.querySelector(".dialogue-container");
+  const instructions = document.querySelector(".instruction");
   const youtubeVideo = document.getElementById("iframe-embed");
   const dialogueBox = document.querySelector(".dialogue-box");
   const audio = document.getElementById('test-audio');
@@ -62,28 +63,32 @@ document.addEventListener("DOMContentLoaded", function () {
   }
   
   //Helper Functions
-  function YTEmbedResize() {
+  function elementResize() {
     const viewportWidth = window.innerWidth;
+    
+    // Resize youtube video
     const widthPercentage = 0.7;
-
     const newWidth = viewportWidth * widthPercentage;
     const newHeight = newWidth * 0.5625;
     const borderRadius = newWidth * 0.02;
-
     youtubeVideo.style.width = `${newWidth}px`;
     youtubeVideo.style.height = `${newHeight}px`;
     youtubeVideo.style.borderRadius = `${borderRadius}px`;
 
-    const fontPercentage = 0.03;
-    const newFontSize = 2 * fontPercentage * viewportWidth;
-    dialogueBox.style.fontSize = `${newFontSize}em`;
+    // Resize font size
+    const fontPercentage = 0.016;
+    const newFontSize = fontPercentage * viewportWidth;
+    dialogueBox.style.fontSize = `${newFontSize}px`;
+    instructions.style.fontSize = `${1.55 * newFontSize}px`;
   }
 
+  // Play audio with filename
   function playAudio(filename) {
     audio.src = 'audios/' + filename + '.mp3';
     audio.play();
   }
 
+  // Set element display
   function setDisplay(element, display) {
     element.style.display = display;
   }
@@ -176,8 +181,8 @@ document.addEventListener("DOMContentLoaded", function () {
     playAudio("sample");
   });
   
-  YTEmbedResize();
-  window.addEventListener('resize', YTEmbedResize);
+  elementResize();
+  window.addEventListener('resize', elementResize);
 
   document.querySelectorAll(".click-box").forEach(function (clickBox) {
     clickBox.addEventListener("click", function () {
