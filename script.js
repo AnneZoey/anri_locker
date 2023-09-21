@@ -20,6 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const hidePhoneButton = document.querySelector('.hide-phone-button'); // The hide phone button element
   const phone = document.querySelector('.phone-item-container');
   const clock = document.getElementById('clock');
+  const progressBar = document.querySelector(".song-progress-bar-fill");
   
   // Game-related variables
   let timeoutId; // The ID of the timeout for hiding the dialogue box
@@ -63,30 +64,31 @@ document.addEventListener("DOMContentLoaded", function () {
   const nextButton = document.getElementById("next");
   var phoneAudio = new Audio("assets/phone_assets/songs/sample.mp3");
   
+  // This function controls the audio playback when the play/pause button is clicked
   function playerControl() {
+  // If the audio is playing, pause it and change the play button icon to 'play'
     if (!phoneAudio.paused) {
       phoneAudio.pause();
       playButton.src = "assets/phone_assets/play-button.webp";
-    } else {
+    } 
+    // If the audio is paused, play it and change the play button icon to 'pause'
+    else {
       phoneAudio.play();
       playButton.src = "assets/phone_assets/pause-button.webp";
     }
   }
   
-  function updateSongProgressBar() {
-    const progressBar = document.querySelector(".song-progress-bar-fill");
-    const currentTime = phoneAudio.currentTime;
-    const duration = phoneAudio.duration;
-    const progressPercentage = (currentTime / duration) * 100;
-    progressBar.style.width = progressPercentage + "%";
-    requestAnimationFrame(updateSongProgressBar);
+  function updateSongProgressBar() { 
+    const currentTime = phoneAudio.currentTime; // Get the current time of the audio playback
+    const duration = phoneAudio.duration; // Get the total duration of the audio file
+    const progressPercentage = (currentTime / duration) * 100; // Calculate the progress percentage
+    progressBar.style.width = progressPercentage + "%"; // Set the width of the progress bar element to the progress percentage
   }
   
-  updateSongProgressBar();
   phoneAudio.addEventListener("ended", function () {
     playButton.src = "assets/phone_assets/play-button.webp";
   });
-  
+  phoneAudio.addEventListener("timeupdate", updateSongProgressBar);
   playButton.addEventListener("click", playerControl);
 
   // This function updates the clock with the current time

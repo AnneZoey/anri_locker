@@ -136,6 +136,7 @@ h1 {
 .song-progress-bar-fill {
   background-color: white;
   height: 100%;
+  width: 100%;
   transition: width 0.15s linear;
 }
 
@@ -167,7 +168,7 @@ h1 {
   object-fit: contain;
 }
 
-#yt-app, #sc-app, #tw-app, #ao-app {
+.app-container img {
   width: 100%;
   height: 100%;
   object-fit: contain;
