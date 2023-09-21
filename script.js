@@ -18,6 +18,9 @@ document.addEventListener("DOMContentLoaded", function () {
   const content = document.getElementById('content'); // The content element
   const showPhoneButton = document.querySelector('.show-phone-button'); // The show phone button element
   const hidePhoneButton = document.querySelector('.hide-phone-button'); // The hide phone button element
+  const phone = document.querySelector('.phone-item-container');
+  const clock = document.getElementById('clock');
+  
   // Game-related variables
   let timeoutId; // The ID of the timeout for hiding the dialogue box
   let hitCount = 0; // The number of times the "locker-slam" click box has been clicked
@@ -55,27 +58,38 @@ document.addEventListener("DOMContentLoaded", function () {
     }, 25);
   }
 
-  function showPhone() {
-    const phone = document.querySelector('.phone-item-container');
-    phone.style.display = 'flex';
-    phone.style.animation = 'slideIn 0.2s ease';
-    showPhoneButton.style.display = 'none';
+  function updateClock() {
+    let date = new Date();
+    let hours = date.getHours();
+    let minutes = date.getMinutes();
+    let seconds = date.getSeconds();
+    //if minute is less than 10 then add 0 before it
+    minutes = minutes < 10 ? "0" + minutes : minutes;
+    clock.textContent = `${hours}:${minutes}`;
   }
 
+  updateClock();
+  setInterval(updateClock, 1000);
+
+  // This function shows the phone by setting its display to 'flex' and animating it with a slideIn animation
+  function showPhone() {
+    phone.style.display = 'flex';
+    phone.style.animation = 'slideIn 0.2s ease';
+    showPhoneButton.style.display = 'none'; // Hide the showPhoneButton
+  }
+
+  // This function hides the phone by animating it with a slideOut animation and setting its display to 'none'
   function hidePhone() {
-    const phone = document.querySelector('.phone-item-container');
     phone.style.animation = 'slideOut 0.3s ease';
     setTimeout(function () {
       phone.style.display = 'none';
-      showPhoneButton.style.display = 'flex';
+      showPhoneButton.style.display = 'flex'; // Show the showPhoneButton
       showPhoneButton.style.animation = 'slideIn 0.2s ease';
-    }, 300);
+    }, 300); // Wait for 300ms before hiding the phone and showing the showPhoneButton
   }
 
   hidePhoneButton.addEventListener('click', hidePhone);
   showPhoneButton.addEventListener('click', showPhone);
-
-
 
   /**
    * Returns a string of text based on the given random number.
@@ -309,7 +323,30 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Add a resize event listener to the window that calls the elementResize function when the window is resized
   window.addEventListener('resize', elementResize);
-  
+
+  // Add a click event listener to each app container element
+  document.querySelectorAll(".app-container").forEach(function (appContainer) {
+    appContainer.addEventListener("click", function () {
+      const appContainerId = appContainer.id;
+      switch (appContainerId) {
+        case "yt-app":
+          window.open("https://www.youtube.com/@AUDIOLOGIE", "_blank");
+          break;
+        case "ao-app":
+          window.open("https://audiologie.us/", "_blank");
+          break;
+        case "tw-app":
+          window.open("https://twitter.com/audiologie_en?lang=en", "_blank");
+          break;
+        case "sc-app":
+          window.open("https://soundcloud.com/audiologie_en", "_blank");
+          break;
+        default:
+          window.open("https://www.youtube.com/@AUDIOLOGIE", "_blank");
+      }
+    });
+  });
+
   // Add a click event listener to each click box element
   document.querySelectorAll(".click-box").forEach(function (clickBox) {
     clickBox.addEventListener("click", function () {
