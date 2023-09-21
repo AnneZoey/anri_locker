@@ -276,7 +276,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Add a click event listener to the sample button that plays the "sample.mp3" audio file
   sample.addEventListener("click", function () {
-    playAudio("sample");
+    var audioElement = getAudio("sample");
+    audioElement.load();
+    playAudio(audioElement);
   });
 
   // Call the elementResize function to resize various elements on the page based on the current viewport width
