@@ -8,7 +8,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const instructions = document.querySelector(".instruction"); // The instructions element
   const youtubeVideo = document.getElementById("iframe-embed"); // The YouTube video iframe
   const dialogueBox = document.querySelector(".dialogue-box"); // The dialogue box element
-  const audio = document.getElementById('test-audio'); // The audio element for testing purposes
   const junHiding = document.getElementById('jun-hiding'); // The Jun hiding element
   const preorderButton = document.getElementById('preorder-button'); // The preorder button element
   const button = document.getElementById('button'); // The button element
@@ -18,22 +17,19 @@ document.addEventListener("DOMContentLoaded", function () {
   const loadingText = document.getElementById('loading-text'); // The loading text element
   const content = document.getElementById('content'); // The content element
 
-  //Audio settings
-  audio.volume = 0.7; // Set the volume of the audio to 70%
-
   // Game-related variables
   let timeoutId; // The ID of the timeout for hiding the dialogue box
   let hitCount = 0; // The number of times the "locker-slam" click box has been clicked
   let min = 1; // The minimum value for the random number generator
-  let max = 7; // The maximum value for the random number generator
+  let max = 8; // The maximum value for the random number generator
   let randomNum = getRandomInt(min, max); // A random number between min and max (inclusive)
 
   /**
- * Returns a random integer between the given minimum and maximum values (inclusive).
- * @param {number} min - The minimum value for the random number generator.
- * @param {number} max - The maximum value for the random number generator.
- * @returns {number} A random integer between min and max (inclusive).
- */
+   * Returns a random integer between the given minimum and maximum values (inclusive).
+   * @param {number} min - The minimum value for the random number generator.
+   * @param {number} max - The maximum value for the random number generator.
+   * @returns {number} A random integer between min and max (inclusive).
+   */
   function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
@@ -77,7 +73,9 @@ document.addEventListener("DOMContentLoaded", function () {
       case 6:
         return "I'm Vietnamese-Chinese!";
       case 7:
-        return "my star sign is Gemini ⭐ I can't wait to introduce someone to you...";
+        return "My star sign is Gemini ⭐ I can't wait to introduce someone to you...";
+      case 8:
+        return "Chachamaru's name is inspired by the hitmaker Cha Cha Malone!";
       default:
         return "Loading...";
     }
@@ -121,8 +119,8 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   /**
- * Hides the header element when the user scrolls down and shows it when the user scrolls up.
- */
+   * Hides the header element when the user scrolls down and shows it when the user scrolls up.
+   */
   function autoHideHeaderSrcoll() {
     let prevScrollpos = window.pageYOffset;
     window.onscroll = function() {
@@ -136,31 +134,41 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-/**
- * Plays the audio file with the given file name.
- * @param {string} filename - The name of the audio file to play.
- */
-  function playAudio(filename) {
-    const audioFileName = `audios/${filename}.mp3`;
-    const audioElement = new Audio(audioFileName);
-    audioElement.load();
+  /**
+   * Plays the given audio element and pauses any currently playing audio.
+   * @param {HTMLAudioElement} audioElement - The audio element to play.
+   */
+  let currentAudioElement = null;
+  function playAudio(audioElement) {
+    // Pause any currently playing audio
+    if (currentAudioElement !== null) {
+      currentAudioElement.pause();
+    }
+    // Play the new audio element
+    currentAudioElement = audioElement;
     audioElement.play();
   }
 
-/**
- * Sets the display property of the given element to the given value.
- * @param {HTMLElement} element - The element to set the display property of.
- * @param {string} display - The value to set the display property to.
- */
+  function getAudio(filename) {
+    let audioFileName = `audios/${filename}.mp3`;
+    let audioElement = new Audio(audioFileName);
+    return audioElement;
+  }
+
+  /**
+   * Sets the display property of the given element to the given value.
+   * @param {HTMLElement} element - The element to set the display property of.
+   * @param {string} display - The value to set the display property to.
+   */
   function setDisplay(element, display) {
     element.style.display = display;
   }
 
-/**
- * Sets the animation property of the given element to the given animation name.
- * @param {HTMLElement} element - The element to set the animation property of.
- * @param {string} animationName - The name of the animation to set.
- */
+  /**
+   * Sets the animation property of the given element to the given animation name.
+   * @param {HTMLElement} element - The element to set the animation property of.
+   * @param {string} animationName - The name of the animation to set.
+   */
   function setAnimation(element, animationName) {
     // If the animation name is "none", set the animation property to "none"
     // Otherwise, set the animation property to the given animation name with a duration of 0.15s and an ease-in-out timing function
@@ -169,8 +177,8 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   /**
- * Plays a random audio file and sets the href of the button element based on the random number generated.
- */
+   * Plays a random audio file and sets the href of the button element based on the random number generated.
+   */
   function playRandomAudio() {
     const randomNum = getRandomInt(1, 4); // Generate a random number between 1 and 4 (inclusive)
     const audioFileName = `audios/button-${randomNum}.mp3`; // Construct the file name of the audio file to play
@@ -185,44 +193,43 @@ document.addEventListener("DOMContentLoaded", function () {
   }
   
   /**
- * Shows a dialogue box with the given text and plays the audio associated with the given click box ID.
- * @param {string} text - The text to display in the dialogue box.
- * @param {string} clickBoxId - The ID of the click box that was clicked.
- */
+   * Shows a dialogue box with the given text and plays the audio associated with the given click box ID.
+   * @param {string} text - The text to display in the dialogue box.
+   * @param {string} clickBoxId - The ID of the click box that was clicked.
+   */
   function showDialogue(text, clickBoxId) {
-    audio.pause(); // Pause any currently playing audio
+    audioElement = getAudio(clickBoxId);
+    audioElement.load();
     setDisplay(anriIcon, "block"); // Show the Anri icon
     setDisplay(junIcon, "none"); // Hide the Jun icon
     setDisplay(junHiding, "none"); // Hide the Jun hiding element
     setAnimation(dialogueContainer, "none"); // Reset the animation of the dialogue container
 
-    if (clickBoxId === "locker-slam") {
-      if (hitCount < 3) {
-        // For the first three clicks on "locker-slam", only play sound and hide dialogue
-        playAudio(clickBoxId);
-        hitCount++;
-      } else {
-        // After the third click on "locker-slam", show dialogue and play "get-off.mp3"
-        playAudio("get-off");
-        clickBoxId = "get-off";
-        hitCount = 0;
-        text = "Whaddup dawg?";
-        setDisplay(anriIcon, "none"); // Hide the Anri icon
-        setDisplay(junIcon, "block"); // Show the Jun icon
-        setDisplay(junHiding, "block"); // Show the Jun hiding element
-      }
-    } else {
-      // For other click-boxes, just play the audio associated with them
-      playAudio(clickBoxId);
-    }
-
-    const audioFileName = `audios/${clickBoxId}.mp3`;
-    const audioElement = new Audio(audioFileName);
-    audioElement.load();
-
     audioElement.addEventListener('loadedmetadata', function() {
       const audioDurationInSeconds = audioElement.duration;
       const delayMilliseconds = audioDurationInSeconds * 1000;
+
+      if (clickBoxId === "locker-slam") {
+        if (hitCount < 3) {
+          // For the first three clicks on "locker-slam", only play sound and hide dialogue
+          playAudio(audioElement);
+          hitCount++;
+        } else {
+          // After the third click on "locker-slam", show dialogue and play "get-off.mp3"
+          clickBoxId = "get-off";
+          audioElement = getAudio(clickBoxId);
+          audioElement.load();
+          playAudio(audioElement);
+          hitCount = 0;
+          text = "Whaddup dawg?";
+          setDisplay(anriIcon, "none"); // Hide the Anri icon
+          setDisplay(junIcon, "block"); // Show the Jun icon
+          setDisplay(junHiding, "block"); // Show the Jun hiding element
+        }
+      } else {
+        // For other click-boxes, just play the audio associated with them
+        playAudio(audioElement);
+      }
       
       dialogueBox.innerText = text;
       setTimeout(function () {
@@ -241,7 +248,7 @@ document.addEventListener("DOMContentLoaded", function () {
         setAnimation(dialogueContainer, "none"); // Reset the animation of the dialogue container
         setDisplay(junHiding, "none"); // Hide the Jun hiding element
         setAnimation(junHiding, "none"); // Reset the animation of the Jun hiding element
-        audio.pause(); // Pause the audio
+        audioElement.pause(); // Pause the audio
         }, { once: true });
       }, delayMilliseconds);
     });
