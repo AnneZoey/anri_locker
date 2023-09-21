@@ -58,13 +58,48 @@ document.addEventListener("DOMContentLoaded", function () {
     }, 25);
   }
 
+  const playButton = document.getElementById("play");
+  const prevButton = document.getElementById("prev");
+  const nextButton = document.getElementById("next");
+  var phoneAudio = new Audio("assets/phone_assets/songs/sample.mp3");
+  
+  function playerControl() {
+    if (!phoneAudio.paused) {
+      phoneAudio.pause();
+      playButton.src = "assets/phone_assets/play-button.webp";
+    } else {
+      phoneAudio.play();
+      playButton.src = "assets/phone_assets/pause-button.webp";
+    }
+  }
+  
+  function updateSongProgressBar() {
+    const progressBar = document.querySelector(".song-progress-bar-fill");
+    const currentTime = phoneAudio.currentTime;
+    const duration = phoneAudio.duration;
+    const progressPercentage = (currentTime / duration) * 100;
+    progressBar.style.width = progressPercentage + "%";
+    requestAnimationFrame(updateSongProgressBar);
+  }
+  
+  updateSongProgressBar();
+  phoneAudio.addEventListener("ended", function () {
+    playButton.src = "assets/phone_assets/play-button.webp";
+  });
+  
+  playButton.addEventListener("click", playerControl);
+
+  // This function updates the clock with the current time
   function updateClock() {
-    let date = new Date();
-    let hours = date.getHours();
-    let minutes = date.getMinutes();
-    let seconds = date.getSeconds();
-    //if minute is less than 10 then add 0 before it
+    let date = new Date(); // Get the current date and time
+    let hours = date.getHours(); // Get the current hour
+    let minutes = date.getMinutes(); // Get the current minute
+    let seconds = date.getSeconds(); // Get the current second
+
+    // If the minute is less than 10, add a leading zero to it
     minutes = minutes < 10 ? "0" + minutes : minutes;
+
+    // Set the text content of the clock element to the current time
     clock.textContent = `${hours}:${minutes}`;
   }
 

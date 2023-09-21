@@ -136,6 +136,7 @@ h1 {
 .song-progress-bar-fill {
   background-color: white;
   height: 100%;
+  transition: width 0.15s linear;
 }
 
 .control-container {
