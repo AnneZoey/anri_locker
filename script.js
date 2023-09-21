@@ -23,6 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
   let min = 1; // The minimum value for the random number generator
   let max = 8; // The maximum value for the random number generator
   let randomNum = getRandomInt(min, max); // A random number between min and max (inclusive)
+  let currentAudioElement = null; // The currently playing audio element
 
   /**
    * Returns a random integer between the given minimum and maximum values (inclusive).
@@ -138,7 +139,6 @@ document.addEventListener("DOMContentLoaded", function () {
    * Plays the given audio element and pauses any currently playing audio.
    * @param {HTMLAudioElement} audioElement - The audio element to play.
    */
-  let currentAudioElement = null;
   function playAudio(audioElement) {
     // Pause any currently playing audio
     if (currentAudioElement !== null) {
@@ -244,11 +244,11 @@ document.addEventListener("DOMContentLoaded", function () {
         setAnimation(dialogueContainer, "fadeOut"); // Fade out the dialogue container
         setAnimation(junHiding, "fadeOut2"); // Fade out the Jun hiding element
         dialogueContainer.addEventListener("animationend", function() {
-        setDisplay(dialogueContainer, "none"); // Hide the dialogue container
-        setAnimation(dialogueContainer, "none"); // Reset the animation of the dialogue container
-        setDisplay(junHiding, "none"); // Hide the Jun hiding element
-        setAnimation(junHiding, "none"); // Reset the animation of the Jun hiding element
-        audioElement.pause(); // Pause the audio
+          setDisplay(dialogueContainer, "none"); // Hide the dialogue container
+          setAnimation(dialogueContainer, "none"); // Reset the animation of the dialogue container
+          setDisplay(junHiding, "none"); // Hide the Jun hiding element
+          setAnimation(junHiding, "none"); // Reset the animation of the Jun hiding element
+          audioElement.pause(); // Pause the audio
         }, { once: true });
       }, delayMilliseconds);
     });
