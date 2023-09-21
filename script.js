@@ -206,8 +206,8 @@ document.addEventListener("DOMContentLoaded", function () {
     setAnimation(dialogueContainer, "none"); // Reset the animation of the dialogue container
 
     audioElement.addEventListener('loadedmetadata', function() {
-      const audioDurationInSeconds = audioElement.duration;
-      const delayMilliseconds = audioDurationInSeconds * 1000;
+      let audioDurationInSeconds = audioElement.duration;
+      let delayMilliseconds = audioDurationInSeconds * 1000;
 
       if (clickBoxId === "locker-slam") {
         if (hitCount < 3) {
