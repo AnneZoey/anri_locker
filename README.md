@@ -2,7 +2,7 @@
 
 Welcome to the Anri Locker Website, an interactive website where you can learn more about ANRI's background and personality. ANRI is an AI virtual singer powered by SynthesizerV, a singing voice synthesizer software developed by Dreamtonics.
 
-This website was created to promote the release of my newest song "Eyes Closed," which features Audiologie's updated SynthesizerV AI ANRI Arcane. The song showcases ANRI's signature sound and versatility.
+This website was created to promote the release of my newest song "Eyes Closed," which features Audiologie's updated SynthesizerV AI ANRI Arcane. The website is designed to complement the song and showcase ANRI's signature sound and versatility.
 
 ## Usage
 
