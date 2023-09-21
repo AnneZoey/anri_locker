@@ -23,6 +23,70 @@ audio {
   display: none;
 }
 
+.phone-menu-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.phone-item-container {
+  display: none;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.phone-container {
+  max-width: 350px;
+  min-width: 100px;
+  flex-direction: column;
+}
+
+#phone {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.hide-phone-button {
+  background-color: rgb(214, 85, 25);
+  width: 50px;
+  height: 50px;
+  border-radius: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+#hide-phone-icon {
+  width: 50%;
+}
+
+.show-phone-button {
+  background-color: rgb(214, 85, 25);
+  width: 90px;
+  height: 90px;
+  border-radius: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  cursor: pointer;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+  margin-left: auto;
+}
+
+#phone-icon {
+  width: 70%;
+}
+
 .name-spin-heart {
   position: relative;
   display: flex;
@@ -1165,5 +1229,23 @@ audio {
   }
   100% {
     transform: rotateY(360deg);
+  }
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+@keyframes slideOut {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(110%);
   }
 }

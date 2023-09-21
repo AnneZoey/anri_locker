@@ -16,7 +16,8 @@ document.addEventListener("DOMContentLoaded", function () {
   const sample = document.getElementById('sample'); // The sample element
   const loadingText = document.getElementById('loading-text'); // The loading text element
   const content = document.getElementById('content'); // The content element
-
+  const showPhoneButton = document.querySelector('.show-phone-button'); // The show phone button element
+  const hidePhoneButton = document.querySelector('.hide-phone-button'); // The hide phone button element
   // Game-related variables
   let timeoutId; // The ID of the timeout for hiding the dialogue box
   let hitCount = 0; // The number of times the "locker-slam" click box has been clicked
@@ -53,6 +54,28 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }, 25);
   }
+
+  function showPhone() {
+    const phone = document.querySelector('.phone-item-container');
+    phone.style.display = 'flex';
+    phone.style.animation = 'slideIn 0.2s ease';
+    showPhoneButton.style.display = 'none';
+  }
+
+  function hidePhone() {
+    const phone = document.querySelector('.phone-item-container');
+    phone.style.animation = 'slideOut 0.3s ease';
+    setTimeout(function () {
+      phone.style.display = 'none';
+      showPhoneButton.style.display = 'flex';
+      showPhoneButton.style.animation = 'slideIn 0.2s ease';
+    }, 300);
+  }
+
+  hidePhoneButton.addEventListener('click', hidePhone);
+  showPhoneButton.addEventListener('click', showPhone);
+
+
 
   /**
    * Returns a string of text based on the given random number.
