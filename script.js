@@ -141,8 +141,10 @@ document.addEventListener("DOMContentLoaded", function () {
  * @param {string} filename - The name of the audio file to play.
  */
   function playAudio(filename) {
-    audio.src = 'audios/' + filename + '.mp3';
-    audio.play();
+    const audioFileName = `audios/${filename}.mp3`;
+    const audioElement = new Audio(audioFileName);
+    audioElement.load();
+    audioElement.play();
   }
 
 /**
