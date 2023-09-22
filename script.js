@@ -249,7 +249,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     audioElement.addEventListener('loadedmetadata', function() {
       let audioDurationInSeconds = audioElement.duration;
-      let delayMilliseconds = audioDurationInSeconds * 1000;
+      let delayMilliseconds = (audioDurationInSeconds * 1000) + 1000;
 
       if (clickBoxId === "locker-slam") {
         if (hitCount < 3) {
