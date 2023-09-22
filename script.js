@@ -59,44 +59,12 @@ document.addEventListener("DOMContentLoaded", function () {
     }, 25);
   }
 
-  const playButton = document.getElementById("play");
-  const prevButton = document.getElementById("prev");
-  const nextButton = document.getElementById("next");
-  var phoneAudio = new Audio("assets/phone_assets/songs/sample.mp3");
   
-  // This function controls the audio playback when the play/pause button is clicked
-  function playerControl() {
-  // If the audio is playing, pause it and change the play button icon to 'play'
-    if (!phoneAudio.paused) {
-      phoneAudio.pause();
-      playButton.src = "assets/phone_assets/play-button.webp";
-    } 
-    // If the audio is paused, play it and change the play button icon to 'pause'
-    else {
-      phoneAudio.play();
-      playButton.src = "assets/phone_assets/pause-button.webp";
-    }
-  }
-  
-  function updateSongProgressBar() { 
-    const currentTime = phoneAudio.currentTime; // Get the current time of the audio playback
-    const duration = phoneAudio.duration; // Get the total duration of the audio file
-    const progressPercentage = (currentTime / duration) * 100; // Calculate the progress percentage
-    progressBar.style.width = progressPercentage + "%"; // Set the width of the progress bar element to the progress percentage
-  }
-  
-  phoneAudio.addEventListener("ended", function () {
-    playButton.src = "assets/phone_assets/play-button.webp";
-  });
-  phoneAudio.addEventListener("timeupdate", updateSongProgressBar);
-  playButton.addEventListener("click", playerControl);
-
   // This function updates the clock with the current time
   function updateClock() {
     let date = new Date(); // Get the current date and time
     let hours = date.getHours(); // Get the current hour
     let minutes = date.getMinutes(); // Get the current minute
-    let seconds = date.getSeconds(); // Get the current second
 
     // If the minute is less than 10, add a leading zero to it
     minutes = minutes < 10 ? "0" + minutes : minutes;
