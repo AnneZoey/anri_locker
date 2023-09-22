@@ -114,7 +114,7 @@ document.addEventListener("DOMContentLoaded", function () {
       case 5:
         return "When I'm stressed, I eat a bánh mì and I'm good as new!";
       case 6:
-        return "I'm Vietnamese-Chinese!";
+        return "I'm mixed Vietnamese-Chinese born American!";
       case 7:
         return "My star sign is Gemini ⭐ I can't wait to introduce someone to you...";
       case 8:
@@ -387,7 +387,7 @@ document.addEventListener("DOMContentLoaded", function () {
           textToShow = "Keshi signed this one for me on the back!";
           break;
         case "gibson":
-          textToShow = "Their electric guitars rocks! Get it?";
+          textToShow = "Their electric guitars rock! Get it?";
           break;
         case "keshi-polaroid-2":
           textToShow = "Gotta keep my eyes closed for that... mhmm";
