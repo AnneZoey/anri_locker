@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const hidePhoneButton = document.querySelector('.hide-phone-button'); // The hide phone button element
   const phone = document.querySelector('.phone-item-container');
   const clock = document.getElementById('clock');
-  const progressBar = document.querySelector(".song-progress-bar-fill");
+  const nameTitle = document.querySelector('.name h1');
   
   // Game-related variables
   let timeoutId; // The ID of the timeout for hiding the dialogue box
@@ -29,6 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
   let max = 8; // The maximum value for the random number generator
   let randomNum = getRandomInt(min, max); // A random number between min and max (inclusive)
   let currentAudioElement = null; // The currently playing audio element
+  let junAppeared = false; // Whether or not Jun has appeared
 
   /**
    * Returns a random integer between the given minimum and maximum values (inclusive).
@@ -98,7 +99,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   /**
    * Returns a string of text based on the given random number.
-   * @param {number} randomNum - A random number between 1 and 7 (inclusive).
+   * @param {number} randomNum - A random number.
    * @returns {string} A string of text based on the given random number.
    */
   function getText(randomNum) {
@@ -123,7 +124,65 @@ document.addEventListener("DOMContentLoaded", function () {
         return "Loading...";
     }
   }
-    
+
+  /**
+   * Changes the style of the selected language button and updates the title based on the selected language.
+   * @param {string} language - The selected language.
+   */
+  function changeLanguageStyle(language) {
+    // Update the title based on the selected language.
+    updateTitle(nameTitle, language);
+    // Select all the language buttons.
+    const languageButtons = document.querySelectorAll(".language-container");
+    // Loop through each language button.
+    languageButtons.forEach(function (languageButton) {
+      // Set the background color and text color of the button based on whether its id matches the selected language.
+      languageButton.style.backgroundColor = languageButton.id === language ? "bisque" : "";
+      languageButton.style.color = languageButton.id === language ? "black" : "bisque";
+    });
+  }
+
+  /**
+   * Updates the scroll box content based on the selected language.
+   * @param {string} language - The selected language.
+   */
+  function changeLanguage(language) {
+    // Select the scroll box content element.
+    const scrollBoxContent = document.querySelector(".scroll-box-content p");
+    // Use a switch statement to update the scroll box content based on the selected language.
+    switch (language) {
+      case "eng":
+        scrollBoxContent.textContent = "Airi Lin, also known by her stage name of “ANRI”, joined AO in 2021 and debuted with “PROGRAMMED 2 LOVE” in the same year. She is a kind young lady with a warm and dynamic personality. When she sets a goal, she pursues it with single-minded determination. In her free time, she enjoys songwriting, musical production, and spending time with her pet guinea pig Chachamaru.";
+        break;
+      case "vie":  
+        scrollBoxContent.textContent = "Airi Lin hay còn được biết đến với nghệ danh “ANRI”. Cô gia nhập AO và ra mắt với bài hát đầu tiên “PROGRAMMED 2 LOVE” vào năm 2021. Cô ấy là một cô gái thân thiện, năng động và đầy đam mê với âm nhạc. Khi đặt ra mục tiêu mới, cô ấy sẽ theo đuổi nó đến cùng với tất cả tâm huyết của mình. Khi rảnh rỗi, cô ấy thích sáng tác, sản xuất âm nhạc và dành thời gian cho chú chuột cưng của mình, em ấy tên là Chachamaru."
+        break;
+      case "jpn":
+        scrollBoxContent.textContent = "con knee cheese wah oh knee san. yamete kudasai.";
+        break;
+      case "chn":
+        scrollBoxContent.textContent = "knee how ma? dah jia how! woh su knee anri";
+        break;
+      default:
+        scrollBoxContent.textContent = "test";
+    }
+  }
+
+  const languageTitles = {
+    eng: "ANRI",
+    jpn: "杏里",
+    chn: "铃爱莉"
+  };
+  
+  /**
+   * Updates the title based on the selected language.
+   * @param {HTMLElement} titleElement - The title element to update.
+   * @param {string} language - The selected language.
+   */
+  function updateTitle(titleElement, language) {
+    titleElement.textContent = languageTitles[language] || "ANRI";
+  }
+      
   /**
    * Resizes various elements on the page based on the current viewport width.
    */
@@ -222,14 +281,10 @@ document.addEventListener("DOMContentLoaded", function () {
    * Plays a random audio file and sets the href of the button element based on the random number generated.
    */
   function playRandomAudio() {
-    const randomNum = getRandomInt(1, 4); // Generate a random number between 1 and 4 (inclusive)
+    const randomNum = getRandomInt(1, 3); // Generate a random number between 1 and 3 (inclusive)
     const audioFileName = `audios/button-${randomNum}.mp3`; // Construct the file name of the audio file to play
     const audioElement = new Audio(audioFileName); // Create a new Audio object with the file name
-    if (randomNum === 3) { // If the random number is 3
-      button.setAttribute("href","https://audiologie.us/products/synthesizer-v-jun-body-pillow-case"); // Set the href of the button to the Jun body pillow case product page
-    } else { // If the random number is not 3
-      button.setAttribute("href","https://audiologie.us/products/synthesizer-v-ai-anri-digital"); // Set the href of the button to the Anri digital product page
-    }
+    button.setAttribute("href","https://audiologie.us/products/synthesizer-v-ai-anri-digital");
     audioElement.load(); // Load the audio file
     audioElement.play(); // Play the audio file
   }
@@ -249,7 +304,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     audioElement.addEventListener('loadedmetadata', function() {
       let audioDurationInSeconds = audioElement.duration;
-      let delayMilliseconds = (audioDurationInSeconds * 1000) + 1000;
+      let delayMilliseconds = (audioDurationInSeconds * 1000) + 100;
 
       if (clickBoxId === "locker-slam") {
         if (hitCount < 3) {
@@ -264,6 +319,7 @@ document.addEventListener("DOMContentLoaded", function () {
           playAudio(audioElement);
           hitCount = 0;
           text = "Whaddup dawg?";
+          junAppeared = true;
           setDisplay(anriIcon, "none"); // Hide the Anri icon
           setDisplay(junIcon, "block"); // Show the Jun icon
           setDisplay(junHiding, "block"); // Show the Jun hiding element
@@ -290,11 +346,16 @@ document.addEventListener("DOMContentLoaded", function () {
           setAnimation(dialogueContainer, "none"); // Reset the animation of the dialogue container
           setDisplay(junHiding, "none"); // Hide the Jun hiding element
           setAnimation(junHiding, "none"); // Reset the animation of the Jun hiding element
+          if (junAppeared)  {
+            window.open("https://audiologie.us/products/synthesizer-v-jun-body-pillow-case", "_blank");
+            junAppeared = false;
+          }
           audioElement.pause(); // Pause the audio
         }, { once: true });
       }, delayMilliseconds);
     });
   }
+  
   // Event Listeners and function calls
   // Call the autoHideHeaderSrcoll function to hide the header element when the user scrolls down and show it when the user scrolls up
   autoHideHeaderSrcoll();
@@ -351,6 +412,20 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   });
+
+  // Add a click event listener to each language container.
+  document.querySelectorAll(".language-container").forEach(function (languageContainer) {
+    // When a language container is clicked, get its id and pass it to the changeLanguageStyle and changeLanguage functions.
+    languageContainer.addEventListener("click", function () {
+      const languageContainerId = languageContainer.id;
+      changeLanguageStyle(languageContainerId);
+      changeLanguage(languageContainerId);
+    });
+  });
+
+  // Set the initial language to English.
+  changeLanguage("eng");
+  changeLanguageStyle("eng");
 
   // Add a click event listener to each click box element
   document.querySelectorAll(".click-box").forEach(function (clickBox) {
