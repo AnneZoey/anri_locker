@@ -8,7 +8,7 @@ You can visit this website at https://annezoey.github.io/anri_locker/
 
 ## Usage
 
-To explore ANRI's locker, simply click on the items inside. You'll discover more about ANRI's interests, hobbies, and personal life.
+To explore ANRI's locker, simply click on the items inside. You'll discover more about ANRI's interests, hobbies, and personal life. There are fun secrets hidden in the website for you to find out!
 
 ### Preorder
 
