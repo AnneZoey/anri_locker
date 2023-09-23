@@ -875,7 +875,7 @@ h1 {
 /* Responsive video */
 
 /*Phone menu is not supported in this version*/
-@media screen and (max-height: 700px) {
+@media screen and (max-height: 400px) {
   .phone-menu-container {
     display: none;
   }
