@@ -60,30 +60,40 @@ document.addEventListener("DOMContentLoaded", function () {
     }, 25);
   }
 
-  function generateClickIndicator(x, y) {
-    const clickIndicator = document.createElement("div");
+/**
+ * Generates a click indicator element at the specified x and y coordinates.
+ * @param {number} x - The x-coordinate of the click event.
+ * @param {number} y - The y-coordinate of the click event.
+ */
+function generateClickIndicator(x, y) {
+  // Create a new div element to hold the click indicator image.
+  const clickIndicator = document.createElement("div");
 
-    const imageElement = document.createElement("img");
-    imageElement.setAttribute("src", "assets/click-indicator.png");
-    imageElement.setAttribute("id", "click-indicator-img");
-    clickIndicator.appendChild(imageElement);
+  // Create a new img element to display the click indicator image.
+  const imageElement = document.createElement("img");
+  imageElement.setAttribute("src", "assets/click-indicator.png");
+  imageElement.setAttribute("id", "click-indicator-img");
+  clickIndicator.appendChild(imageElement);
 
-    clickIndicator.classList.add("click-indicator");
-    clickIndicator.style.left = `${x}px`;
-    clickIndicator.style.top = `${y + window.pageYOffset}px`;
-    clickIndicator.style.zIndex = "9999";
-    document.body.appendChild(clickIndicator);
+  // Add the click-indicator class to the div element and position it at the specified x and y coordinates.
+  clickIndicator.classList.add("click-indicator");
+  clickIndicator.style.left = `${x}px`;
+  clickIndicator.style.top = `${y + window.pageYOffset}px`;
+  clickIndicator.style.zIndex = "9999";
+  document.body.appendChild(clickIndicator);
 
-    clickIndicator.addEventListener("animationend", function() {
-      document.body.removeChild(clickIndicator);
-    });
-  }
-
-  document.addEventListener("click", function (event) {
-    const x = event.clientX;
-    const y = event.clientY;
-    generateClickIndicator(x, y);
+  // Add an event listener to the click indicator element that removes it from the DOM when the animation ends.
+  clickIndicator.addEventListener("animationend", function() {
+    document.body.removeChild(clickIndicator);
   });
+}
+
+// Add a click event listener to the document that generates a click indicator at the clicked location.
+document.addEventListener("click", function (event) {
+  const x = event.clientX;
+  const y = event.clientY;
+  generateClickIndicator(x, y);
+});
 
   // This function updates the clock with the current time
   function updateClock() {
