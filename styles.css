@@ -5,6 +5,26 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600&display=swap');
 
 /* Global styles */
+html {
+  cursor: url(cursors/cursor_f1.png), auto;
+  -webkit-animation: cursor 1000ms infinite;
+  animation: cursor 1000ms infinite;
+}
+
+@keyframes cursor {
+  0% {cursor: url(cursors/cursor_f1.png), auto;}
+  100% {cursor: url(cursors/cursor_f2.png), auto;}
+}
+
+@keyframes cursor-pointer {
+  0% {cursor: url(cursors/pointer_f4.png), auto;}
+  60% {cursor: url(cursors/pointer_f4.png), auto;}
+  80% {cursor: url(cursors/pointer_f1.png), auto;}
+  85% {cursor: url(cursors/pointer_f2.png), auto;}
+  95% {cursor: url(cursors/pointer_f3.png), auto;}
+  100% {cursor: url(cursors/pointer_f3.png), auto;}
+}
+
 body {
   display: flex;
   justify-content: center;
@@ -121,7 +141,9 @@ h1 {
 }
 
 .app-container:hover {
-  cursor: pointer;
+  cursor: url(cursors/pointer_f1.png), auto;
+  -webkit-animation: cursor-pointer 1000ms infinite;
+  animation: cursor-pointer 1000ms infinite;
   transform: scale(1.1);
 }
 
@@ -162,9 +184,9 @@ h1 {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  cursor: pointer;
   opacity: 1;
   transition: opacity 0.3s ease;
+  cursor: pointer;
   box-shadow: 0 0 20px 2px rgba(255, 228, 196, 0.253);
 }
 
@@ -260,7 +282,9 @@ h1 {
 
 #sample:hover {
   fill: rgb(160, 97, 19);
-  cursor: pointer;
+  cursor: url(cursors/pointer_f1.png), auto;
+  -webkit-animation: cursor-pointer 1000ms infinite;
+  animation: cursor-pointer 1000ms infinite;
 }
 
 #sample:active {
@@ -325,7 +349,9 @@ h1 {
 }
 
 .language-container:hover {
-  cursor: pointer;
+  cursor: url(cursors/pointer_f1.png), auto;
+  -webkit-animation: cursor-pointer 1000ms infinite;
+  animation: cursor-pointer 1000ms infinite;
   background-color: rgba(255, 228, 196, 0.297);
   color: black;
 }
@@ -452,7 +478,6 @@ h1 {
 
 .preorder-button-container:hover {
   transform: scale(1.05);
-  cursor: pointer;
 }
 
 .audiologie-logo {
@@ -484,7 +509,9 @@ h1 {
 
 .logo-container:hover {
   transform: scale(1.05);
-  cursor: pointer;
+  cursor: url(cursors/anri_cursor_pointer.gif), auto;
+  -webkit-animation: cursor-pointer 1000ms infinite;
+  animation: cursor-pointer 1000ms infinite;
 }
 #ao-logo {
   width: 100%;
@@ -607,7 +634,9 @@ h1 {
   width: 3%;
   height: 5%;
   position: absolute;
-  cursor: pointer;
+  cursor: url(cursors/anri_cursor_pointer.gif), auto;
+  -webkit-animation: cursor-pointer 1000ms infinite;
+  animation: cursor-pointer 1000ms infinite;
 }
 
 #akem {
