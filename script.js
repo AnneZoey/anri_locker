@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
   let timeoutId; // The ID of the timeout for hiding the dialogue box
   let hitCount = 0; // The number of times the "locker-slam" click box has been clicked
   let min = 1; // The minimum value for the random number generator
-  let max = 8; // The maximum value for the random number generator
+  let max = 9; // The maximum value for the random number generator
   let randomNum = getRandomInt(min, max); // A random number between min and max (inclusive)
   let currentAudioElement = null; // The currently playing audio element
   let junAppeared = false; // Whether or not Jun has appeared
@@ -60,7 +60,31 @@ document.addEventListener("DOMContentLoaded", function () {
     }, 25);
   }
 
-  
+  function generateClickIndicator(x, y) {
+    const clickIndicator = document.createElement("div");
+
+    const imageElement = document.createElement("img");
+    imageElement.setAttribute("src", "assets/click-indicator.png");
+    imageElement.setAttribute("id", "click-indicator-img");
+    clickIndicator.appendChild(imageElement);
+
+    clickIndicator.classList.add("click-indicator");
+    clickIndicator.style.left = `${x}px`;
+    clickIndicator.style.top = `${y + window.pageYOffset}px`;
+    clickIndicator.style.zIndex = "9999";
+    document.body.appendChild(clickIndicator);
+
+    clickIndicator.addEventListener("animationend", function() {
+      document.body.removeChild(clickIndicator);
+    });
+  }
+
+  document.addEventListener("click", function (event) {
+    const x = event.clientX;
+    const y = event.clientY;
+    generateClickIndicator(x, y);
+  });
+
   // This function updates the clock with the current time
   function updateClock() {
     let date = new Date(); // Get the current date and time
@@ -120,6 +144,8 @@ document.addEventListener("DOMContentLoaded", function () {
         return "My star sign is Gemini ⭐ I can't wait to introduce someone to you...";
       case 8:
         return "Chachamaru's name is inspired by the hitmaker Cha Cha Malone!";
+      case 9:
+        return "You can check out my personal music playlist on my phone!";
       default:
         return "Loading...";
     }
@@ -158,10 +184,10 @@ document.addEventListener("DOMContentLoaded", function () {
         scrollBoxContent.textContent = "Airi Lin hay còn được biết đến với nghệ danh “ANRI”. Cô gia nhập AO và ra mắt với bài hát đầu tiên “PROGRAMMED 2 LOVE” vào năm 2021. Cô ấy là một cô gái thân thiện, năng động và đầy đam mê với âm nhạc. Khi đặt ra mục tiêu mới, cô ấy sẽ theo đuổi nó đến cùng với tất cả tâm huyết của mình. Khi rảnh rỗi, cô ấy thích sáng tác, sản xuất âm nhạc và dành thời gian cho chú chuột cưng của mình, em ấy tên là Chachamaru."
         break;
       case "jpn":
-        scrollBoxContent.textContent = "con knee cheese wah oh knee san. yamete kudasai.";
+        scrollBoxContent.textContent = "ANRIの芸名でも知られるAiri Linは、2021年にAOに加入し、同年に「PROGRAMMED 2 LOVE」でデビューした。温厚で活発な性格の優しい女性だ。目標を決めたら一心不乱に突き進む。趣味は作詞作曲、音楽制作、ペットのモルモット「Chachamaru」と過ごすこと。";
         break;
       case "chn":
-        scrollBoxContent.textContent = "knee how ma? dah jia how! woh su knee anri";
+        scrollBoxContent.textContent = "铃爱莉，网名“ANRI”，于2021年加入AO，同年以《PROGRAMMED 2 LOVE》出道。她是一位心地善良的少女，性格热情而充满活力。当她设定目标时，她就会一心一意地追求它。在空闲时间，她喜欢歌曲创作、音乐制作，并与她的宠物豚鼠《茶茶丸》 共度时光。";
         break;
       default:
         scrollBoxContent.textContent = "test";
