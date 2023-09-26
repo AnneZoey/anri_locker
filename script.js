@@ -66,18 +66,18 @@ document.addEventListener("DOMContentLoaded", function () {
  * @param {number} x - The x-coordinate of the click event.
  * @param {number} y - The y-coordinate of the click event.
  */
-function generateClickIndicator(x, y) {
+function generateClickIndicator(x, y, suffix) {
   // Create a new div element to hold the click indicator image.
   const clickIndicator = document.createElement("div");
 
   // Create a new img element to display the click indicator image.
   const imageElement = document.createElement("img");
   imageElement.setAttribute("src", "assets/click-indicator.png");
-  imageElement.setAttribute("id", "click-indicator-img");
+  imageElement.setAttribute("id", `click-indicator-img${suffix}`);
   clickIndicator.appendChild(imageElement);
 
   // Add the click-indicator class to the div element and position it at the specified x and y coordinates.
-  clickIndicator.classList.add("click-indicator");
+  clickIndicator.classList.add(`click-indicator${suffix}`);
   clickIndicator.style.left = `${x}px`;
   clickIndicator.style.top = `${y + window.pageYOffset}px`;
   clickIndicator.style.zIndex = "9999";
@@ -93,7 +93,9 @@ function generateClickIndicator(x, y) {
 document.addEventListener("click", function (event) {
   const x = event.clientX;
   const y = event.clientY;
-  generateClickIndicator(x, y);
+  generateClickIndicator(x, y, 0); // Creates a click indicator with suffix 0
+  generateClickIndicator(x, y, 1); // Creates a click indicator with suffix 1
+  generateClickIndicator(x, y, 2); // Creates a click indicator with suffix 2
 });
 
   // This function updates the clock with the current time
