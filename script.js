@@ -26,11 +26,12 @@ document.addEventListener("DOMContentLoaded", function () {
   let timeoutId; // The ID of the timeout for hiding the dialogue box
   let hitCount = 0; // The number of times the "locker-slam" click box has been clicked
   let min = 1; // The minimum value for the random number generator
-  let max = 9; // The maximum value for the random number generator
+  let max = 10; // The maximum value for the random number generator
   let randomNum = getRandomInt(min, max); // A random number between min and max (inclusive)
   let currentAudioElement = null; // The currently playing audio element
   let junAppeared = false; // Whether or not Jun has appeared
-
+  let currentLanguage = "eng"; // The currently selected language
+  
   /**
    * Returns a random integer between the given minimum and maximum values (inclusive).
    * @param {number} min - The minimum value for the random number generator.
@@ -156,6 +157,8 @@ document.addEventListener("click", function (event) {
         return "Chachamaru's name is inspired by the hitmaker Cha Cha Malone!";
       case 9:
         return "You can check out my personal music playlist on my phone!";
+      case 10:
+        return "I can sing in different languages! Check out my bio for a taste!";
       default:
         return "Loading...";
     }
@@ -340,7 +343,7 @@ document.addEventListener("click", function (event) {
 
     audioElement.addEventListener('loadedmetadata', function() {
       let audioDurationInSeconds = audioElement.duration;
-      let delayMilliseconds = (audioDurationInSeconds * 1000) + 100;
+      let delayMilliseconds = (audioDurationInSeconds * 1000) + 500;
 
       if (clickBoxId === "locker-slam") {
         if (hitCount < 3) {
@@ -413,10 +416,16 @@ document.addEventListener("click", function (event) {
     playRandomAudio();
   });
 
-  // Add a click event listener to the sample button that plays the "sample.mp3" audio file
+  // Add a click event listener to the sample element.
   sample.addEventListener("click", function () {
-    var audioElement = getAudio("sample");
+    // Construct the file name of the audio file based on the current language.
+    let audioFileName = `audios/anri-sample/${currentLanguage}-sample.mp3`;
+
+    // Create a new Audio object and load the audio file.
+    let audioElement = new Audio(audioFileName);
     audioElement.load();
+
+    // Call the playAudio function to play the audio file.
     playAudio(audioElement);
   });
 
@@ -454,6 +463,7 @@ document.addEventListener("click", function (event) {
     // When a language container is clicked, get its id and pass it to the changeLanguageStyle and changeLanguage functions.
     languageContainer.addEventListener("click", function () {
       const languageContainerId = languageContainer.id;
+      currentLanguage = languageContainerId;
       changeLanguageStyle(languageContainerId);
       changeLanguage(languageContainerId);
     });
