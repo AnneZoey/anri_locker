@@ -3,6 +3,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inclusive+Sans&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Zen+Antique+Soft&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Song+Myung&display=swap');
 
 /* Global styles */
 html {
@@ -238,7 +239,7 @@ h1 {
 .name h1 {
   margin: 0;
   padding: 0;
-  font-family: 'DM Serif Display', 'Zen Antique Soft', 'Noto Serif SC', serif;
+  font-family: 'DM Serif Display', 'Zen Antique Soft', 'Noto Serif SC', 'Song Myung', serif;
   font-style: italic;
   font-weight: 400;
 }

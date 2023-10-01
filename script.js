@@ -201,6 +201,9 @@ document.addEventListener("click", function (event) {
       case "jpn":
         scrollBoxContent.textContent = "ANRIの芸名でも知られるAiri Linは、2021年にAOに加入し、同年に「PROGRAMMED 2 LOVE」でデビューした。温厚で活発な性格の優しい女性だ。目標を決めたら一心不乱に突き進む。趣味は作詞作曲、音楽制作、ペットのモルモット「Chachamaru」と過ごすこと。";
         break;
+      case "kor":
+        scrollBoxContent.textContent = "안리(ANRI)의 예명으로도 알려진 Airi Lin은, 2021년 AO에 가입해, 같은 해 「PROGRAMMED 2 LOVE」로 데뷔했습니다. 그녀는 온후하고 활발한 성격의 상냥한 여성이며 목표를 정하면 한번 시작하면 끝을 보는 성격입니다. 취미는 작사작곡, 음악 제작, 기니피그 애완동물인「Chachamaru」와 보내는 것 입니다.";
+        break;
       case "chn":
         scrollBoxContent.textContent = "铃爱莉，网名“ANRI”，于2021年加入AO，同年以《PROGRAMMED 2 LOVE》出道。她是一位心地善良的少女，性格热情而充满活力。当她设定目标时，她就会一心一意地追求它。在空闲时间，她喜欢歌曲创作、音乐制作，并与她的宠物豚鼠《茶茶丸》 共度时光。";
         break;
@@ -212,6 +215,7 @@ document.addEventListener("click", function (event) {
   const languageTitles = {
     eng: "ANRI",
     jpn: "杏里",
+    kor: "안리",
     chn: "铃爱莉"
   };
   
