@@ -489,6 +489,15 @@ document.addEventListener("click", function (event) {
         case "locker-slam":
           textToShow = "* Hits the locker door *";
           break;
+        case "ippotsk":
+          textToShow = "I saw ippo.tsk played the the guitar once. It was nice until he broke a string :(";
+          break;
+        case "marvin":
+          textToShow = "I broke Marvin's drums one time during our recording session... I hope he isn't mad at me... ";
+          break;
+        case "mode-s-3":
+          textToShow = "This vocal mode shares a name with the mascot of Wildfire Prevention!";
+          break;
         case "rock-polaroid":
           textToShow = "Oops! That's my leggy pic.";
           break;

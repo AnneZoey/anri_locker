@@ -640,6 +640,21 @@ h1 {
   animation: cursor-pointer 1000ms infinite;
 }
 
+#marvin {
+  width: 4.5%;
+  height: 10%;
+  top: 4%;
+  left: 76%;
+  border-radius: 50%;
+}
+
+#ippotsk {
+  width: 4.5%;
+  height: 10%;
+  top: 6%;
+  left: 69.5%;
+}
+
 #akem {
   width: 5.3%;
   height: 10%;
@@ -798,7 +813,7 @@ h1 {
 }
 
 /*Mode Clickboxes*/
-#mode-c {
+#mode-s-3 {
   height: 8.9%;
   width: 2.5%;
   border-radius: 90%;
