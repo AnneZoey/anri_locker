@@ -57,11 +57,44 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
   width: 100%;
 }
 
 audio {
   display: none;
+}
+
+.contest-rules {
+  color: bisque;
+  background-color: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 60%;
+}
+
+.rules-container h1 {
+  font-family: "DM Serif Display";
+  text-align: center;
+}
+.rules-container {
+  margin: 5%;
+  width: 100%;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 5%;
+  background-color: #000000c0;
+  box-shadow: 0px 0px 20px 0px rgba(255, 228, 196, 0.212);
+}
+
+.contest-rules h2,
+h3 {
+  font-weight: 400;
 }
 
 .phone-menu-container {
@@ -225,7 +258,6 @@ h1 {
 
 .character-bio {
   position: relative;
-  overflow: hidden;
   height: 800px;
   width: 100%;
   max-width: 1200px;

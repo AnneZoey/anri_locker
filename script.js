@@ -21,6 +21,12 @@ document.addEventListener("DOMContentLoaded", function () {
   const phone = document.querySelector(".phone-item-container");
   const clock = document.getElementById("clock");
   const nameTitle = document.querySelector(".name h1");
+  const rulesContainer = document.querySelector(".rules-container");
+  const rulesContainerh1 = document.querySelector(".rules-container h1");
+  const rulesContainerlist = document.querySelector(".rules-container ol");
+  const rulesContainerItem = document.querySelectorAll(".rules-container li");
+  const rulesContainterh2 = document.querySelectorAll(".rules-container h2");
+  const rulesContainerh3 = document.querySelectorAll(".rules-container h3");
 
   // Game-related variables
   let timeoutId; // The ID of the timeout for hiding the dialogue box
@@ -270,6 +276,79 @@ document.addEventListener("DOMContentLoaded", function () {
     const anriIconContainerPercentage = 0.075;
     const newAnriIconContainer = anriIconContainerPercentage * viewportWidth;
     anriIconContainer.style.width = `${newAnriIconContainer}px`;
+
+    // Resize rules container
+    const rulesContainerPercentage = 0.6;
+    const newRulesContainer = rulesContainerPercentage * viewportWidth;
+    rulesContainer.style.width = `${newRulesContainer}px`;
+    rulesContainer.style.borderRadius = `${newRulesContainer * 0.02}px`;
+
+    // Resize rules container h1
+    const rulesContainerh1Percentage = 0.04;
+    const newRulesContainerh1 = rulesContainerh1Percentage * viewportWidth;
+    rulesContainerh1.style.fontSize = `${newRulesContainerh1}px`;
+
+    // Resize rules container h2
+    const rulesContainterh2Percentage = 0.025;
+    const newRulesContainterh2 = rulesContainterh2Percentage * viewportWidth;
+    rulesContainterh2.forEach((h2) => {
+      h2.style.fontSize = `${newRulesContainterh2}px`;
+    });
+
+    // Resize rules container h3
+    const rulesContainerh3Percentage = 0.02;
+    const newRulesContainerh3 = rulesContainerh3Percentage * viewportWidth;
+    rulesContainerh3.forEach((h3) => {
+      h3.style.fontSize = `${newRulesContainerh3}px`;
+    });
+
+    // Resize rules container list
+    const rulesContainerlistPercentage = 0.02;
+    const newRulesContainerlist = rulesContainerlistPercentage * viewportWidth;
+    rulesContainerlist.style.fontSize = `${newRulesContainerlist}px`;
+
+    // Add padding to li items
+    const rulesContainerItemPercentage = 0.01;
+    const newRulesContainerItem = rulesContainerItemPercentage * viewportWidth;
+    rulesContainerItem.forEach((item) => {
+      item.style.paddingBottom = `${newRulesContainerItem}px`;
+    });
+
+    //remove padding for the last li item
+    rulesContainerItem[rulesContainerItem.length - 1].style.paddingBottom = 0;
+
+    // make sure that the text has a maximum size
+    if (newRulesContainerh1 > 60) {
+      rulesContainerh1.style.fontSize = "60px";
+    }
+
+    if (newRulesContainterh2 > 40) {
+      rulesContainterh2.forEach((h2) => {
+        h2.style.fontSize = "40px";
+      });
+    }
+
+    if (newRulesContainerh3 > 30) {
+      rulesContainerh3.forEach((h3) => {
+        h3.style.fontSize = "30px";
+      });
+    }
+
+    if (newRulesContainerlist > 30) {
+      rulesContainerlist.style.fontSize = "30px";
+    }
+
+    if (newRulesContainerItem > 20) {
+      rulesContainerItem.forEach((item) => {
+        item.style.paddingBottom = "20px";
+      });
+    }
+
+    // Set maximum width of rules-container to 800px
+    if (newRulesContainer > 900) {
+      rulesContainer.style.width = "900px";
+      rulesContainer.style.borderRadius = "16px";
+    }
   }
 
   /**
