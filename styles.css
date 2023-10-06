@@ -49,7 +49,60 @@ body {
   align-items: center;
   margin: 0;
   background-image: url(assets/bg.webp);
+  background-size: cover;
   font-family: "Neucha", sans-serif, serif;
+}
+
+.get-ticket-container {
+  color: bisque;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  margin-top: 3%;
+  margin-bottom: 3%;
+}
+
+#get-tix-text {
+  font-size: 40px;
+  font-family: "DM Serif Display", serif;
+}
+
+#reserve-button {
+  color: #000000;
+  font-weight: 600;
+  background-color: bisque;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 150px;
+  height: 50px;
+  border-radius: 15px;
+  transition: transform 0.3s ease;
+  cursor: url(cursors/pointer_f1.png), auto;
+  -webkit-animation: cursor-pointer 1000ms infinite;
+  animation: cursor-pointer 1000ms infinite;
+}
+
+#reserve-button:hover {
+  transform: scale(1.05);
+}
+
+.tix-container {
+  max-width: 1400px;
+  display: flex;
+  margin-top: 2%;
+}
+
+.tix-text-container {
+  width: 200px;
+}
+
+#tix-thumbnail {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 #content {
@@ -72,16 +125,14 @@ audio {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 60%;
 }
 
 .rules-container h1 {
-  font-family: "DM Serif Display";
+  font-family: "DM Serif Display", serif;
   text-align: center;
 }
 .rules-container {
   margin: 5%;
-  width: 100%;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
@@ -95,6 +146,10 @@ audio {
 .contest-rules h2,
 h3 {
   font-weight: 400;
+}
+
+.contest-rules h2 {
+  margin: 0;
 }
 
 .phone-menu-container {
@@ -483,6 +538,7 @@ p {
 
 .instruction h3 {
   margin-top: 0;
+  font-weight: bold;
 }
 
 .preorder-container {
@@ -644,7 +700,6 @@ p {
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 2.5em;
 }
 
 #iframe-embed {

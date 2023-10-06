@@ -27,6 +27,8 @@ document.addEventListener("DOMContentLoaded", function () {
   const rulesContainerItem = document.querySelectorAll(".rules-container li");
   const rulesContainterh2 = document.querySelectorAll(".rules-container h2");
   const rulesContainerh3 = document.querySelectorAll(".rules-container h3");
+  const getTixText = document.getElementById("get-tix-text");
+  const reserveButton = document.getElementById("reserve-button");
 
   // Game-related variables
   let timeoutId; // The ID of the timeout for hiding the dialogue box
@@ -349,6 +351,16 @@ document.addEventListener("DOMContentLoaded", function () {
       rulesContainer.style.width = "900px";
       rulesContainer.style.borderRadius = "16px";
     }
+
+    const getTixTextPercentage = 0.035;
+    const newGetTixText = getTixTextPercentage * viewportWidth;
+    getTixText.style.fontSize = `${newGetTixText}px`;
+
+    const reserveButtonPercentage = 0.02;
+    const newReserveButton = reserveButtonPercentage * viewportWidth;
+    reserveButton.style.fontSize = `${newReserveButton}px`;
+    reserveButton.style.width = `${newReserveButton * 8}px`;
+    reserveButton.style.height = `${newReserveButton * 2}px`;
   }
 
   /**
@@ -519,6 +531,10 @@ document.addEventListener("DOMContentLoaded", function () {
   // Add a click event listener to the preorder button that plays a random audio file and sets the href of the button element based on the random number generated
   preorderButton.addEventListener("click", function () {
     playRandomAudio();
+  });
+
+  reserveButton.addEventListener("click", function () {
+    window.open("https://tickets.audiologie.us/", "_blank");
   });
 
   // Add a click event listener to the sample element.
