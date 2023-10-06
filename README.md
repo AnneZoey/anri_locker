@@ -4,7 +4,7 @@ Welcome to the Anri Locker Website, an interactive website where you can learn m
 
 This website was created to promote the release of my newest song "Eyes Closed," which features Audiologie's updated SynthesizerV AI ANRI Arcane. The website is designed to complement the song and showcase ANRI's signature sound and versatility.
 
-You can visit this website at https://annezoey.github.io/anri_locker/
+You can visit this website at https://locker.audiologie.us
 
 ## Usage
 
