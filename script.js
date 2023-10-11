@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", function () {
   let timeoutId; // The ID of the timeout for hiding the dialogue box
   let hitCount = 0; // The number of times the "locker-slam" click box has been clicked
   let min = 1; // The minimum value for the random number generator
-  let max = 10; // The maximum value for the random number generator
+  let max = 11; // The maximum value for the random number generator
   let randomNum = getRandomInt(min, max); // A random number between min and max (inclusive)
   let currentAudioElement = null; // The currently playing audio element
   let junAppeared = false; // Whether or not Jun has appeared
@@ -169,6 +169,8 @@ document.addEventListener("DOMContentLoaded", function () {
         return "You can check out my personal music playlist on my phone!";
       case 10:
         return "I can sing in different languages! Check out my bio for a taste!";
+      case 11:
+        return "My favorite beat producers are Metro Boomin and London on da Track!";
       default:
         return "Loading...";
     }
@@ -204,7 +206,7 @@ document.addEventListener("DOMContentLoaded", function () {
     switch (language) {
       case "eng":
         scrollBoxContent.textContent =
-          "Airi Lin, also known by her stage name of “ANRI”, joined AO in 2021 and debuted with “PROGRAMMED 2 LOVE” in the same year. She is a kind young lady with a warm and dynamic personality. When she sets a goal, she pursues it with single-minded determination. In her free time, she enjoys songwriting, musical production, and spending time with her pet guinea pig Chachamaru.";
+          "Airi Lin, known professionally as  “ANRI” is a singer-songwriter, fashion model and social media influencer. She first joined AO in 2021 and debuted with “PROGRAMMED 2 LOVE” in the same year. In 2023, she released her debut studio album, “TKO”.  ANRI is a kind young lady with a warm and dynamic personality. When she sets a goal, she pursues it with single-minded determination. In her free time, she enjoys songwriting, attending music festivals and dancing. As a talented singer-songwriter, ANRI is one of a kind. She’s well-versed in piano and guitar, and she's already making a name for herself in the music scene.";
         break;
       case "vie":
         scrollBoxContent.textContent =
