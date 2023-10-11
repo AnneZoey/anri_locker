@@ -206,7 +206,7 @@ document.addEventListener("DOMContentLoaded", function () {
     switch (language) {
       case "eng":
         scrollBoxContent.textContent =
-          "Airi Lin, known professionally as  “ANRI” is a singer-songwriter, fashion model and social media influencer. She first joined AO in 2021 and debuted with “PROGRAMMED 2 LOVE” in the same year. In 2023, she released her debut studio album, “TKO”.  ANRI is a kind young lady with a warm and dynamic personality. When she sets a goal, she pursues it with single-minded determination. In her free time, she enjoys songwriting, attending music festivals and dancing. As a talented singer-songwriter, ANRI is one of a kind. She’s well-versed in piano and guitar, and she's already making a name for herself in the music scene.";
+          "Airi Lin, known professionally as  “ANRI” is a singer-songwriter, fashion model and social media influencer. She first joined AO in 2021 and debuted with “PROGRAMMED 2 LOVE” in the same year. In 2023, she released her debut studio album, “TKO”.  ANRI is a kind young lady with a warm and dynamic personality. When she sets a goal, she pursues it with single-minded determination. In her free time, she enjoys songwriting, attending music festivals, playing with Chachamaru (her beloved guinea pig) and dancing. As a talented singer-songwriter, ANRI is one of a kind. She's well-versed in piano and guitar, and she's already making a name for herself in the music scene.";
         break;
       case "vie":
         scrollBoxContent.textContent =
