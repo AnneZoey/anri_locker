@@ -361,6 +361,11 @@ document.addEventListener("DOMContentLoaded", function () {
     reserveButton.style.fontSize = `${newReserveButton}px`;
     reserveButton.style.width = `${newReserveButton * 8}px`;
     reserveButton.style.height = `${newReserveButton * 2}px`;
+
+    const disclaimer = document.querySelector(".disclaimer");
+    const disclaimerPercentage = 0.015;
+    const newDisclaimer = disclaimerPercentage * viewportWidth;
+    disclaimer.style.fontSize = `${newDisclaimer}px`;
   }
 
   /**
