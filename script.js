@@ -29,6 +29,8 @@ document.addEventListener("DOMContentLoaded", function () {
   const rulesContainerh3 = document.querySelectorAll(".rules-container h3");
   const getTixText = document.getElementById("get-tix-text");
   const reserveButton = document.getElementById("reserve-button");
+  const cursorText = document.getElementById("cursor-text");
+  const cursorTextContainer = document.querySelector(".cursor-text-container");
 
   // Game-related variables
   let timeoutId; // The ID of the timeout for hiding the dialogue box
@@ -321,7 +323,21 @@ document.addEventListener("DOMContentLoaded", function () {
     //remove padding for the last li item
     rulesContainerItem[rulesContainerItem.length - 1].style.paddingBottom = 0;
 
+    //resize #cursor-text
+    const cursorTextPercentage = 0.03;
+    const newCursorText = cursorTextPercentage * viewportWidth;
+    cursorText.style.fontSize = `${newCursorText}px`;
+    cursorText.style.padding = `${newCursorText / 2}px`;
+    cursorTextContainer.style.borderRadius = `${newCursorText / 5}px`;
+
     // make sure that the text has a maximum size
+    //make sure cursor text has a maximum size of 27px
+    if (newCursorText > 27) {
+      cursorText.style.fontSize = "27px";
+      cursorText.style.padding = "13.5px";
+      cursorTextContainer.style.borderRadius = "5.4px";
+    }
+
     if (newRulesContainerh1 > 60) {
       rulesContainerh1.style.fontSize = "60px";
     }
